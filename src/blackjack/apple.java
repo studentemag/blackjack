@@ -1,3 +1,4 @@
+package blackjack;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -10,6 +11,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class apple extends JPanel {  //la classe apple eredita i metodi e gli attributi della classe JPanel
+	
+	private static final long serialVersionUID = -4708058535472595126L;
 	
 	private JButton b[]={ new JButton("hit"), new JButton ("stand"), new JButton("start")};
 	private JTextArea area,area_score;
@@ -26,6 +29,11 @@ public class apple extends JPanel {  //la classe apple eredita i metodi e gli at
 		area=new JTextArea();
 		field=new JTextField();
 		area_score=new JTextArea();
+		
+		area.setName("area");
+		field.setName("field");
+		area_score.setName("area_score");
+		
 		add(field); 
 		add(area_score);
 		add(area);
@@ -96,7 +104,7 @@ public class ascoltatore implements ActionListener {  //eredito il metodo Action
 
 	}
 	
-	public int control(int p) {  //metodo di controllo per stabilire se il valore generato è una figura, in tal caso ritono il relativo valore
+	public int control(int p) {  //metodo di controllo per stabilire se il valore generato ? una figura, in tal caso ritono il relativo valore
 
 	if (p >=2 && p<=10) {area.setText(area.getText()+" "+p); return p;}
 	if (p==1){ area.setText(area.getText()+" A"); return 11;}
