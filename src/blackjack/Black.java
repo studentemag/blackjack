@@ -16,7 +16,7 @@ public class Black extends JFrame { // eredito i metodi e gli attributi della
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-//HHHG
+//HHHG6
 	public static void main(String[] args) { // richiamo del costruttore
 		new Black();
 
