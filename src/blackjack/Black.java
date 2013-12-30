@@ -6,7 +6,7 @@ public class Black extends JFrame { // eredito i metodi e gli attributi della
 									// classe JFrame
 
 	private static final long serialVersionUID = 3781469417039574636L;
-// CIAO
+// CIAO belli!
 	public Black() { // costruttore
 		setTitle("BlackJack ??? ??? ??? ??? ");
 		Apple tuna = new Apple();
