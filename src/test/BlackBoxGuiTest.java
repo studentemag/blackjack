@@ -10,7 +10,7 @@ import org.uispec4j.interception.WindowHandler;
 import org.uispec4j.interception.WindowInterceptor;
 
 import test.util.BlackJackOracleUtil;
-import blackjack.black;
+import blackjack.Black;
 
 public class BlackBoxGuiTest extends UISpecTestCase {
 	Window window, dialog;
@@ -25,7 +25,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 		//	We then tell this class that it needs to run the blackjack application 
 		//	using the main() found in the Black class, 
 		//	and that it can run this application with no arguments.
-		setAdapter(new MainClassAdapter(black.class, new String[0]));
+		setAdapter(new MainClassAdapter(Black.class, new String[0]));
 	    
 	    //	Retrieve the components
 	    window = getMainWindow();
