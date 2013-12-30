@@ -81,7 +81,7 @@ public class ascoltatore implements ActionListener {  //eredito il metodo Action
 				out=false;
 			}
 			
-			if (tmp=="stand"){
+			if (tmp=="hit"){
 				if (out!=true){
 				x=(int)(Math.random()*12)+1;
 				x=control(x);
@@ -93,7 +93,7 @@ public class ascoltatore implements ActionListener {  //eredito il metodo Action
 				else if (player==21) field.setText("BlackJack!");
 				} else JOptionPane.showMessageDialog(null,"push start!","",JOptionPane.ERROR_MESSAGE);
 			}
-			if (tmp=="hit"){
+			if (tmp=="stand"){
 				if (out!=true){
 					out=true;
 				area.setText(area.getText()+"\n\nCpu\n");
