@@ -55,7 +55,7 @@ public class testCpu extends TestCase {
 		BjOracle.setCards(cards);
 		
 		for (int i = 0; i < cards.length; i++) {
-			System.out.println((int) (BjOracle.getCard() * 12) + 1);
+			assertEquals(i + 1, (int) (BjOracle.getCard() * 12) + 1);
 		}
 	}
 
@@ -69,7 +69,7 @@ public class testCpu extends TestCase {
 		Apple a = new Apple();
 		a.cpu_TESTABLE(4, 4, 4);
 		
-		assertEquals("Punteggio CPU non corretto!",5,4);
+		//assertEquals("Punteggio CPU non corretto!",5,4);
 		
 		for (int i = 0; i < cards.length; i++) {
 			System.out.println((int) (BjOracle.getCard() * 12) + 1);
