@@ -1,38 +1,48 @@
 package test.util;
 
-public class BlackJackOracleUtil {
+public class BjOracle {
 
+	public static final String winString = "Win!";
+	public static final String bjWinString = "21 Vittoria Grande Baldoria!";
+	public static final String bustedString = "Busted!";
+	public static final String bjString = "BlackJack!";
+	public static final String loseString = "Lose!";
+	
+	private static int cardIndex = 0;
+	private static double cards[];
+	
 	public static boolean playerBusted(String area){
-		int player_score = 0;
-		String[] player_scores = area.split("\n")[1].substring(1).split(" ");
-		for (int i=0; i<player_scores.length; i++) {
-			player_score += BlackJackOracleUtil.fromCardToScore(player_scores[i]); 
-		}
+		int player_score = BjOracle.playerScore(area);
 		return (player_score > 21);
 	}
 	
-	public static boolean cpuWon(String area){
-		int player_score = 0, cpu_score=0;
-		
-		String[] player_scores = area.split("\n")[1].substring(1).split(" ");
-		String[] cpu_scores = area.split("\n")[4].substring(1).split(" ");
-		for (int i=0; i<player_scores.length; i++) {
-			player_score += BlackJackOracleUtil.fromCardToScore(player_scores[i]); 
-		}
-		for (int i=0; i<cpu_scores.length; i++) {
-			cpu_score += BlackJackOracleUtil.fromCardToScore(cpu_scores[i]);
-		}
+	public static boolean cpuWins(String area){
+		int player_score = BjOracle.playerScore(area);
+		int cpu_score=BjOracle.cpuScore(area);
 		
 		return (cpu_score<=21 && cpu_score>player_score);
 	}
 	
 	public static boolean blackJack(String area){
+		return (BjOracle.playerScore(area) == 21);
+	}
+	
+	public static int playerScore(String area){
 		int player_score = 0;
 		String[] player_scores = area.split("\n")[1].substring(1).split(" ");
-		for (int i=0; i<2; i++) {
-			player_score += BlackJackOracleUtil.fromCardToScore(player_scores[i]); 
+		for (int i=0; i<player_scores.length; i++) {
+			player_score += BjOracle.fromCardToScore(player_scores[i]); 
 		}
-		return (player_score == 21);
+		return player_score;
+	}
+	
+	public static int cpuScore(String area){
+		int cpu_score=0;
+		String[] cpu_scores = area.split("\n")[4].substring(1).split(" ");
+		for (int i=0; i<cpu_scores.length; i++) {
+			cpu_score += BjOracle.fromCardToScore(cpu_scores[i]);
+		}
+		return cpu_score;
 	}
 	
 	public static int fromCardToScore(int card){
@@ -41,6 +51,24 @@ public class BlackJackOracleUtil {
 			return scores[card-1];
 		else
 			return 0;
+	}
+	
+	public static int cpuGlobalScore(String area) {
+		int cpu_score = 0;
+		if (!area.isEmpty()){
+			String cpu_score_s = (area.split("\n")[2]).split(" ")[1];
+			cpu_score=Integer.parseInt(cpu_score_s);
+		}
+		return cpu_score;
+	}
+	
+	public static int playerGlobalScore(String area) {
+		int player_score = 0;
+		if (!area.isEmpty()){
+			String player_score_s = (area.split("\n")[0]).split(" ")[1];
+			player_score=Integer.parseInt(player_score_s);
+		}
+		return player_score;
 	}
 	
 	public static int fromCardToScore(String card){
@@ -64,7 +92,7 @@ public class BlackJackOracleUtil {
 		}
 		return value;
 	}
-
+	
 	public static double randomDouble() {
 		return cards[cardIndex];
 	}
@@ -80,7 +108,7 @@ public class BlackJackOracleUtil {
 	 * @param cardIndex cardIndex da impostare
 	 */
 	public static void setcardIndex(int cardIndex) {
-		BlackJackOracleUtil.cardIndex = cardIndex;
+		BjOracle.cardIndex = cardIndex;
 	}
 
 	/**
@@ -103,6 +131,4 @@ public class BlackJackOracleUtil {
 		
 	}
 
-	private static int cardIndex = 0;
-	private static double cards[];
 }
