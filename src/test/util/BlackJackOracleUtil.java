@@ -64,4 +64,45 @@ public class BlackJackOracleUtil {
 		}
 		return value;
 	}
+
+	public static double randomDouble() {
+		return cards[cardIndex];
+	}
+
+	/**
+	 * @return cardIndex
+	 */
+	public static int getCardIndex() {
+		return cardIndex;
+	}
+
+	/**
+	 * @param cardIndex cardIndex da impostare
+	 */
+	public static void setcardIndex(int cardIndex) {
+		BlackJackOracleUtil.cardIndex = cardIndex;
+	}
+
+	/**
+	 * @return cards[cardIndex]
+	 */
+	public static double getCard() {
+		return cards[cardIndex++];
+	}
+
+	/**
+	 * @param cards cards da impostare
+	 */
+	public static void setCards(int cardsInt[]) {
+		cards = new double[cardsInt.length];
+		
+		for (int i = 0; i < cardsInt.length; i++) {
+			cards[i] = (double) (cardsInt[i] - 1) / 12;
+			//System.out.println(cards[i]);
+		}
+		
+	}
+
+	private static int cardIndex = 0;
+	private static double cards[];
 }
