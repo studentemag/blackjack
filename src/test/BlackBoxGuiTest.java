@@ -73,17 +73,23 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	/*
 	 * Transition 1
 	 */
-	public void testTransition1(){	
-		assertEquals(State.INIT,currentState());
+	
+	private void moveToPlay(){
 		boolean traversed = false;
 		do {
 			startButton.click();
 			if ( BjOracle.blackJack(area.getText()) )
-				standButton.click();
+				startButton.click();
 			else
 				traversed=true;
 			
 		} while ( !traversed );
+	}
+	
+	public void testTransition1(){	
+		assertEquals(State.INIT,currentState());
+		
+		moveToPlay();
 		
 		assertFalse(area.getText().isEmpty());
 		assertEquals(State.PLAY,currentState());
@@ -181,7 +187,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	 * Transition 6
 	 */
 	public void testTransition6(){
-		testTransition1();
+		moveToPlay();
 		assertEquals(State.PLAY,currentState());		
 		do {
 			startButton.click();
@@ -198,7 +204,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	 * Transition 7
 	 */
 	public void testTransition7(){
-		testTransition1();
+		moveToPlay();
 		assertEquals(State.PLAY,currentState());
 		
 		int player_global_score=BjOracle.playerGlobalScore(area_score.getText());
@@ -220,7 +226,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 		int player_score;
 		
 		do {			
-			testTransition1();
+			moveToPlay();
 			assertEquals(State.PLAY,currentState());
 			
 			player_score=BjOracle.playerScore(area.getText());
@@ -238,10 +244,10 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	public void testTransition9(){
 		int cpu_global_score;
 		do {
-			testTransition1();
+			moveToPlay();
 			assertEquals(State.PLAY,currentState());
 			
-			cpu_global_score=BjOracle.playerScore(area.getText());
+			cpu_global_score=BjOracle.cpuGlobalScore(area_score.getText());
 			hitButton.click();
 		}
 		while (!BjOracle.playerBusted(area.getText()) || BjOracle.blackJack(area.getText()));
@@ -256,7 +262,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	public void testTransition10(){
 		int player_score;
 		do {
-			testTransition1();
+			moveToPlay();
 			assertEquals(State.PLAY,currentState());
 			
 			player_score=BjOracle.playerScore(area.getText());
@@ -275,7 +281,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 		int player_global_score;
 		int cpu_global_score;
 		do {
-			testTransition1();
+			moveToPlay();
 			assertEquals(State.PLAY,currentState());
 			
 			player_global_score=BjOracle.playerGlobalScore(area_score.getText());
@@ -298,7 +304,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 		int player_global_score;
 		int cpu_global_score;
 		do {
-			testTransition1();
+			moveToPlay();
 			assertEquals(State.PLAY,currentState());
 			
 			player_global_score=BjOracle.playerGlobalScore(area_score.getText());
