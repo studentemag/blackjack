@@ -9,7 +9,8 @@ public class Black extends JFrame { // eredito i metodi e gli attributi della
 
 	public Black() { // costruttore
 		setTitle("BlackJack ??? ??? ??? ??? ");
-		Apple tuna = new Apple();
+		Randomizable rand = new Randomizer();
+		Apple tuna = new Apple(rand);
 		add(tuna);
 		setBounds(100, 80, 500, 300);
 		setVisible(true);
