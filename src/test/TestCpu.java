@@ -77,8 +77,6 @@ public class TestCpu extends TestCase {
 		int cards[] = {2,2};
 		rand.setCards(cards);
 		
-		// La dichiarazione di a si trova in cima alla classe, la sua definizione nel metodo setUp, 
-		// in quanto eseguita prima di ogni caso di test
 		a.setPlayer(4);
 		a.setState_cpu(5);
 		a.setState_player(5);
@@ -89,11 +87,11 @@ public class TestCpu extends TestCase {
 		assertEquals("Punteggio globale CPU non corretto!", 6, a.getState_cpu());
 		
 		//Verifichiamo che l'esito della partita sia visualizato correttamente
-		assertEquals("Campo field non corretto!", "Lose!", a.getField());
+		assertEquals("Campo field non corretto!", "Lose!", a.getFieldText());
 		
 		//Verifichiamo che i nuovi punteggi globali siano visualizzati correttamente
 		String s = new String("Player: " + 5 + "\n\nCpu: " + 6);
-		assertEquals("Campo area_score non corretto!", s, a.getArea_score());
+		assertEquals("Campo area_score non corretto!", s, a.getArea_scoreText());
 	}
 	
 	/**
@@ -124,11 +122,11 @@ public class TestCpu extends TestCase {
 		assertEquals("Punteggio globale CPU non corretto!", 6, a2.getState_cpu());
 		
 		//Verifichiamo che l'esito della partita sia visualizato correttamente
-		assertEquals("Campo field non corretto!", "Lose!", a2.getField());
+		assertEquals("Campo field non corretto!", "Lose!", a2.getFieldText());
 		
 		//Verifichiamo che i nuovi punteggi globali siano visualizzati correttamente
 		String s = new String("Player: " + 5 + "\n\nCpu: " + 6);
-		assertEquals("Campo area_score non corretto!", s, a2.getArea_score());
+		assertEquals("Campo area_score non corretto!", s, a2.getArea_scoreText());
 	}
 	
 	/**
@@ -159,10 +157,10 @@ public class TestCpu extends TestCase {
 		assertEquals("Punteggio globale CPU non corretto!", 6, a2.getState_cpu());
 		
 		//Verifichiamo che l'esito della partita sia visualizato correttamente
-		assertEquals("Campo field non corretto!", "Lose!", a2.getField());
+		assertEquals("Campo field non corretto!", "Lose!", a2.getFieldText());
 		
 		//Verifichiamo che i nuovi punteggi globali siano visualizzati correttamente
 		String s = new String("Player: " + 5 + "\n\nCpu: " + 6);
-		assertEquals("Campo area_score non corretto!", s, a2.getArea_score());
+		assertEquals("Campo area_score non corretto!", s, a2.getArea_scoreText());
 	}
 }

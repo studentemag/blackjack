@@ -178,7 +178,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	/**
 	 * @return area_score
 	 */
-	public String getArea_score() {
+	public String getArea_scoreText() {
 		return area_score.getText();
 	}
 
@@ -192,7 +192,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	/**
 	 * @return field
 	 */
-	public String getField() {
+	public String getFieldText() {
 		return field.getText();
 	}
 
@@ -224,7 +224,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	/**
 	 * @param area_score area_score da impostare
 	 */
-	public void setArea_score(String area_score) {
+	public void setArea_scoreText(String area_score) {
 		this.area_score.setText(area_score);
 	}
 
@@ -238,7 +238,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	/**
 	 * @param field field da impostare
 	 */
-	public void setField(String field) {
+	public void setFieldText(String field) {
 		this.field.setText(field);
 	}
 
