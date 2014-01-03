@@ -1,8 +1,9 @@
 /**
  * 
  */
-package blackjack;
+package test.mocks;
 
+import blackjack.Randomizable;
 import test.util.BjOracle;
 
 /**

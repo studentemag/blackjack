@@ -4,10 +4,10 @@
 package test;
 
 import junit.framework.TestCase;
+import test.mocks.RandomizerMock;
 import test.util.BjOracle;
 import blackjack.Apple;
 import blackjack.Randomizable;
-import blackjack.RandomizerMock;
 
 
 /**
@@ -70,7 +70,7 @@ public class TestCpu extends TestCase {
 	 * 		-Punteggio partita: Player= 4 CPU= 4
 	 * 
 	 * Output attesi
-	 * 		In caso di parit‡ vince la CPU
+	 * 		In caso di parit√† vince la CPU
 	 * 		-Punteggio globale: Player= 5 CPU= 6
 	 * 		-Aree di testo: field= "Lose!" area_score= "Player: 5\n\nCpu: 6"
 	 */
