@@ -4,6 +4,9 @@
 package test;
 
 import junit.framework.TestCase;
+
+import org.easymock.EasyMock;
+
 import test.mocks.RandomizerMock;
 import test.util.BjOracle;
 import blackjack.Apple;
@@ -16,8 +19,8 @@ import blackjack.Randomizable;
  */
 public class TestCpu extends TestCase {
 	
-	Apple a;
-	Randomizable rand;
+	Apple a, a2;
+	Randomizable randmock, randeasymock;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -39,8 +42,14 @@ public class TestCpu extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		BjOracle.setcardIndex(0);
-		rand = new RandomizerMock();
-		a = new Apple(rand);
+		
+		randmock = new RandomizerMock();
+		a = new Apple(randmock);
+		
+		// Istanzio un mock per l'interfaccia Randomizable
+		randeasymock = EasyMock.createMock(Randomizable.class);
+		a2 = new Apple(randeasymock);
+		
 	}
 
 	/* (non Javadoc)
@@ -95,5 +104,29 @@ public class TestCpu extends TestCase {
 		//Verifichiamo che i nuovi punteggi globali siano visualizzati correttamente
 		String s = new String("Player: " + 5 + "\n\nCpu: " + 6);
 		assertEquals("Campo area_score non corretto!", s, a.getArea_score());
+	}
+	
+	public final void testCpu01easymock(){
+		int cards[]={2,2};
+		BjOracle.setCards(cards);
+		for (int i=0;i<cards.length;i++)
+			EasyMock.expect(randeasymock.getRandom()).andReturn(BjOracle.getCard()).once();
+		EasyMock.replay(randeasymock);
+		
+		a2.setPlayer(4);
+		a2.setState_cpu(5);
+		a2.setState_player(5);
+		a2.cpu();
+		
+		//Verifichiamo il corretto aggiornamento dei punteggi globali
+		assertEquals("Punteggio globale Player non corretto!", 5, a2.getState_player());
+		assertEquals("Punteggio globale CPU non corretto!", 6, a2.getState_cpu());
+		
+		//Verifichiamo che l'esito della partita sia visualizato correttamente
+		assertEquals("Campo field non corretto!", "Lose!", a2.getField());
+		
+		//Verifichiamo che i nuovi punteggi globali siano visualizzati correttamente
+		String s = new String("Player: " + 5 + "\n\nCpu: " + 6);
+		assertEquals("Campo area_score non corretto!", s, a2.getArea_score());
 	}
 }
