@@ -119,90 +119,6 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 		area_score.setEditable(false);
 	}
 
-	/**
-	 * @return player
-	 */
-	public int getPlayer() {
-		return player;
-	}
-
-	/**
-	 * @param player player da impostare
-	 */
-	public void setPlayer(int player) {
-		this.player = player;
-	}
-
-	/**
-	 * @return cpu
-	 */
-	public int getCpu() {
-		return cpu;
-	}
-
-	/**
-	 * @param cpu cpu da impostare
-	 */
-	public void setCpu(int cpu) {
-		this.cpu = cpu;
-	}
-
-	/**
-	 * @return state_player
-	 */
-	public int getState_player() {
-		return state_player;
-	}
-
-	/**
-	 * @param state_player state_player da impostare
-	 */
-	public void setState_player(int state_player) {
-		this.state_player = state_player;
-	}
-
-	/**
-	 * @return state_cpu
-	 */
-	public int getState_cpu() {
-		return state_cpu;
-	}
-
-	/**
-	 * @param state_cpu state_cpu da impostare
-	 */
-	public void setState_cpu(int state_cpu) {
-		this.state_cpu = state_cpu;
-	}
-
-	/**
-	 * @return area_score
-	 */
-	public String getArea_score() {
-		return area_score.getText();
-	}
-
-	/**
-	 * @param area_score area_score da impostare
-	 */
-	public void setArea_score(String area_score) {
-		this.area_score.setText(area_score);
-	}
-
-	/**
-	 * @return field
-	 */
-	public String getField() {
-		return field.getText();
-	}
-
-	/**
-	 * @param field field da impostare
-	 */
-	public void setField(String field) {
-		this.field.setText(field);
-	}
-
 	public int control(int p) { // metodo di controllo per stabilire se il
 								// valore generato ? una figura, in tal caso
 								// ritono il relativo valore
@@ -259,7 +175,90 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 		return area;
 	}
 
+	/**
+	 * @return area_score
+	 */
+	public String getArea_score() {
+		return area_score.getText();
+	}
+
+	/**
+	 * @return cpu
+	 */
+	public int getCpu() {
+		return cpu;
+	}
+
+	/**
+	 * @return field
+	 */
+	public String getField() {
+		return field.getText();
+	}
+
+	/**
+	 * @return player
+	 */
+	public int getPlayer() {
+		return player;
+	}
+
+	/**
+	 * @return state_cpu
+	 */
+	public int getState_cpu() {
+		return state_cpu;
+	}
+
+	/**
+	 * @return state_player
+	 */
+	public int getState_player() {
+		return state_player;
+	}
+
 	public void setArea(JTextArea area) {
 		this.area = area;
+	}
+
+	/**
+	 * @param area_score area_score da impostare
+	 */
+	public void setArea_score(String area_score) {
+		this.area_score.setText(area_score);
+	}
+
+	/**
+	 * @param cpu cpu da impostare
+	 */
+	public void setCpu(int cpu) {
+		this.cpu = cpu;
+	}
+
+	/**
+	 * @param field field da impostare
+	 */
+	public void setField(String field) {
+		this.field.setText(field);
+	}
+
+	/**
+	 * @param player player da impostare
+	 */
+	public void setPlayer(int player) {
+		this.player = player;
+	}
+	/**
+	 * @param state_cpu state_cpu da impostare
+	 */
+	public void setState_cpu(int state_cpu) {
+		this.state_cpu = state_cpu;
+	}
+
+	/**
+	 * @param state_player state_player da impostare
+	 */
+	public void setState_player(int state_player) {
+		this.state_player = state_player;
 	}
 }

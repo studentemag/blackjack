@@ -8,9 +8,6 @@ public class BjOracle {
 	public static final String bjString = "BlackJack!";
 	public static final String loseString = "Lose!";
 	
-	private static int cardIndex = 0;
-	private static double cards[];
-	
 	public static boolean blackJack(String area){
 		return (BjOracle.playerScore(area) == 21);
 	}
@@ -78,20 +75,6 @@ public class BjOracle {
 			return null;
 	}
 	
-	/**
-	 * @return cards[cardIndex]
-	 */
-	public static double getCard() {
-		return cards[cardIndex++];
-	}
-	
-	/**
-	 * @return cardIndex
-	 */
-	public static int getCardIndex() {
-		return cardIndex;
-	}
-	
 	public static boolean playerBusted(String area){
 		int player_score = BjOracle.playerScore(area);
 		return (player_score > 21);
@@ -115,28 +98,11 @@ public class BjOracle {
 		return player_score;
 	}
 
-	public static double randomDouble() {
-		return cards[cardIndex];
-	}
-
-	/**
-	 * @param cardIndex cardIndex da impostare
-	 */
-	public static void setcardIndex(int cardIndex) {
-		BjOracle.cardIndex = cardIndex;
-	}
-
 	/**
 	 * @param cards cards da impostare
 	 */
-	public static void setCards(int cardsInt[]) {
-		cards = new double[cardsInt.length];
-		
-		for (int i = 0; i < cardsInt.length; i++) {
-			cards[i] = (double) (cardsInt[i] - 1) / 12;
-			//System.out.println(cards[i]);
-		}
-		
+	public static double fromCardToDouble(int card) {
+		return (double) (card - 1) / 12;
 	}
 
 }

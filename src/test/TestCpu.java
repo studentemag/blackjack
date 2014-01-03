@@ -4,12 +4,13 @@
 package test;
 
 import junit.framework.TestCase;
+
 import org.easymock.EasyMock;
+
 import test.mocks.RandomizerMock;
 import test.util.BjOracle;
 import blackjack.Apple;
 import blackjack.Randomizable;
-import blackjack.RandomizerStub;
 
 
 /**
@@ -18,9 +19,11 @@ import blackjack.RandomizerStub;
  */
 public class TestCpu extends TestCase {
 	
-	RandomizerStub rand;
+
+	RandomizerMock rand;
 	Apple a, a2;
 	Randomizable randeasymock;
+
 	
 
 	/* (non Javadoc)
@@ -28,13 +31,15 @@ public class TestCpu extends TestCase {
 	 */
 	protected void setUp() throws Exception {
 		super.setUp();
-		rand = new RandomizerStub();
+		
+		rand = new RandomizerMock();
 		rand.setcardIndex(0);
 		a = new Apple(rand);
 		
 		// Istanzio un mock per l'interfaccia Randomizable
 		randeasymock = EasyMock.createMock(Randomizable.class);
 		a2 = new Apple(randeasymock);
+
 	}
 
 	/* (non Javadoc)
@@ -93,9 +98,8 @@ public class TestCpu extends TestCase {
 	
 	public final void testCpu01easymock(){
 		int cards[]={2,2};
-		BjOracle.setCards(cards);
 		for (int i=0;i<cards.length;i++)
-			EasyMock.expect(randeasymock.getCard()).andReturn(BjOracle.getCard()).once();
+			EasyMock.expect(randeasymock.getCard()).andReturn(BjOracle.fromCardToDouble(cards[i])).once();
 		EasyMock.replay(randeasymock);
 		
 		a2.setPlayer(4);
