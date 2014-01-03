@@ -4,8 +4,11 @@
 package test;
 
 import junit.framework.TestCase;
+import test.mocks.RandomizerMock;
+import test.util.BjOracle;
 import blackjack.Apple;
-import blackjack.RandomizerMock;
+import blackjack.Randomizable;
+import blackjack.RandomizerStub;
 
 
 /**
@@ -15,7 +18,7 @@ import blackjack.RandomizerMock;
 public class TestCpu extends TestCase {
 	
 	Apple a;
-	RandomizerMock rand;
+	RandomizerStub rand;
 	
 
 	/* (non Javadoc)
@@ -23,7 +26,7 @@ public class TestCpu extends TestCase {
 	 */
 	protected void setUp() throws Exception {
 		super.setUp();
-		rand = new RandomizerMock();
+		rand = new RandomizerStub();
 		rand.setcardIndex(0);
 		a = new Apple(rand);
 	}
@@ -55,7 +58,7 @@ public class TestCpu extends TestCase {
 	 * 		-Punteggio partita: Player= 4 CPU= 4
 	 * 
 	 * Output attesi
-	 * 		In caso di parit‡ vince la CPU
+	 * 		In caso di parit√† vince la CPU
 	 * 		-Punteggio globale: Player= 5 CPU= 6
 	 * 		-Aree di testo: field= "Lose!" area_score= "Player: 5\n\nCpu: 6"
 	 */

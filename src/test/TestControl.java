@@ -3,13 +3,16 @@ package test;
 import junit.framework.TestCase;
 import test.util.BjOracle;
 import blackjack.Apple;
+import blackjack.Randomizable;
+import blackjack.Randomizer;
 
 public class TestControl extends TestCase {
 	Apple unitUnderTest;
 	
 	protected void setUp() throws Exception {
 		super.setUp();
-		unitUnderTest = new Apple();
+		Randomizable rand=new Randomizer();
+		unitUnderTest = new Apple(rand);
 	}
 	
 	public int runTestWithParameters(int card, String areaText){
