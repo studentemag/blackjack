@@ -34,7 +34,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 				out = false;
 			}
 
-			if (tmp == "hit") {
+			if (tmp == "stand") {
 				if (out != true) {
 					x = (int) (Math.random() * 12) + 1;
 					x = control(x);
@@ -51,7 +51,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 					JOptionPane.showMessageDialog(null, "push start!", "",
 							JOptionPane.ERROR_MESSAGE);
 			}
-			if (tmp == "stand") {
+			if (tmp == "hit") {
 				if (out != true) {
 					out = true;
 					area.setText(area.getText() + "\n\nCpu\n");
