@@ -176,7 +176,7 @@ public class TestCpu extends TestCase {
 	 * 		-Punteggio globale: Player= 5 CPU= 6
 	 * 		-Aree di testo: field= "Lose!" area_score= "Player: 5\n\nCpu: 6"
 	 */
-	public final void testCpu02easymock() {
+	public final void testCpu03easymock() {
 		int cards[] = {2,2};
 		for (int i = 0; i < cards.length; i++)
 			EasyMock.expect(randeasymock.getCard()).andReturn(BjOracle.fromCardToDouble(cards[i])).once();
@@ -192,10 +192,10 @@ public class TestCpu extends TestCase {
 		assertEquals("Punteggio globale CPU non corretto!", 6, a2.getState_cpu());
 		
 		//Verifichiamo che l'esito della partita sia visualizato correttamente
-		assertEquals("Campo field non corretto!", "Lose!", a2.getField());
+		assertEquals("Campo field non corretto!", "Lose!", a2.getFieldText());
 		
 		//Verifichiamo che i nuovi punteggi globali siano visualizzati correttamente
 		String s = new String("Player: " + 5 + "\n\nCpu: " + 6);
-		assertEquals("Campo area_score non corretto!", s, a2.getArea_score());
+		assertEquals("Campo area_score non corretto!", s, a2.getArea_scoreText());
 	}
 }
