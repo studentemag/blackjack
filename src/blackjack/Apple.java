@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import test.util.BjOracle;
 
 public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 									// attributi della classe JPanel
@@ -254,35 +253,6 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 		}
 		cpu = 0;
 
-	}
-
-	public void cpu_TESTABLE(int player_setted, int state_player_setted, int state_cpu_setted) { // metodo cpu simula la giocata da parte della cpu
-		// tramite un semplice while
-		cpu = (int) (BjOracle.randomDouble() * 12) + 1;
-		cpu = BjOracle.fromCardToScore(cpu);
-		x = (int) (BjOracle.randomDouble() * 12) + 1;
-		x = BjOracle.fromCardToScore(x);
-		cpu += x;
-		while (cpu < player_setted) { // tramite questa istruzione il programma non fa
-								// altro ke generare un numero rand finche la
-								// somma dei valori usciti non supera quella
-								// della giocatore
-			x = (int) (BjOracle.randomDouble() * 12) + 1;
-			cpu += BjOracle.fromCardToScore(x);
-		}
-		if (cpu > 21) {
-			field.setText("Win!");
-			state_player_setted += 1;
-			area_score.setText("Player: " + state_player_setted + "\n\nCpu: "
-					+ state_cpu_setted);
-		} else {
-			field.setText("Lose!");
-			state_cpu_setted += 1;
-			area_score.setText("Player: " + state_player_setted + "\n\nCpu: "
-					+ state_cpu_setted);
-		}
-		cpu = 0;
-	
 	}
 
 	public JTextArea getArea() {
