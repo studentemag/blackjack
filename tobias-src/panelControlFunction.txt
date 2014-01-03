@@ -1,6 +1,0 @@
-group testControl[us=true] {
-	int p = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-	int result = unitUnderTest.control(p);
-	assertEquals(BlackJackOracleUtil.fromCardToScore(p),result);
-	assertEquals(BlackJackOracleUtil.getCardScore(unitUnderTest.getArea().getText().substring(1)),result);
-}

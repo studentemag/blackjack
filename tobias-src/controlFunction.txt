@@ -1,0 +1,9 @@
+group testControl[us=true] {
+	int card = [1,2,5,10,11,12,13];
+	String areaText="hello";
+	
+	int result = runTestWithParameters(card,areaText);
+	
+	assertEquals(BjOracle.fromCardToScore(card),result);
+	assertEquals(areaText+" "+BjOracle.fromCartToSymbol(card),unitUnderTest.getArea().getText());
+}

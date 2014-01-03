@@ -3,19 +3,18 @@
  */
 package test;
 
-import java.awt.SystemColor;
-
-import blackjack.Apple;
-
-import test.util.BjOracle;
 import junit.framework.TestCase;
+import test.util.BjOracle;
+import blackjack.Apple;
 
 
 /**
  * @author Mario
  *
  */
-public class testCpu extends TestCase {
+public class TestCpu extends TestCase {
+	
+	Apple a;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -37,6 +36,7 @@ public class testCpu extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		BjOracle.setcardIndex(0);
+		a = new Apple();
 	}
 
 	/* (non Javadoc)
@@ -66,7 +66,8 @@ public class testCpu extends TestCase {
 		int cards[] = {2,2};
 		BjOracle.setCards(cards);
 		
-		Apple a = new Apple();
+		// La dichiarazione di a si trova in cima alla classe, la sua definizione nel metodo setUp, 
+		// in quanto eseguita prima di ogni caso di test
 		a.cpu_TESTABLE(4, 4, 4);
 		
 		//assertEquals("Punteggio CPU non corretto!",5,4);

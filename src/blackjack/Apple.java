@@ -16,57 +16,6 @@ import test.util.BjOracle;
 public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 									// attributi della classe JPanel
 
-	private static final long serialVersionUID = -4708058535472595126L;
-
-	private JButton b[] = { new JButton("hit"), new JButton("stand"),
-			new JButton("start") };
-	private JTextArea area, area_score;
-	private JTextField field;
-
-	private int player;
-	private int x;
-	private int cpu;
-	private int state_player;
-	private int state_cpu;
-	private boolean out = true;
-
-	public Apple() { // costruttore campo da gioco
-		area = new JTextArea();
-		field = new JTextField();
-		area_score = new JTextArea();
-
-		area.setName("area");
-		field.setName("field");
-		area_score.setName("area_score");
-
-		add(field);
-		add(area_score);
-		add(area);
-		setLayout(null);
-		setBackground(Color.BLACK);
-		setBounds(100, 80, 520, 300);
-
-		for (int i = 0, y = 0; i < 3; i++, y += 20) {
-			b[i].addActionListener(new Ascoltatore());
-			b[i].setBounds(20, 20 + y, 100, 20);
-			add(b[i]);
-		}
-
-		area.setBounds(140, 20, 325, 200);
-		area.setFont(new Font("Sanserif", Font.ITALIC, 25));
-		area.setBackground(Color.LIGHT_GRAY);
-		area.setEditable(false);
-		field.setEditable(false);
-		field.setBounds(140, 228, 325, 20);
-		field.setFont(new Font("Sanserif", Font.BOLD, 15));
-		field.setBackground(Color.LIGHT_GRAY);
-		area_score.setBackground(Color.GREEN);
-		area_score.setForeground(Color.BLACK);
-		area_score.setFont(new Font("Sanserif", Font.BOLD, 23));
-		area_score.setBounds(20, 120, 95, 90);
-		area_score.setEditable(false);
-	}
-
 	public class Ascoltatore implements ActionListener { // eredito il metodo
 															// ActionPerformed
 
@@ -114,6 +63,57 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 			}
 		}
 
+	}
+
+	private static final long serialVersionUID = -4708058535472595126L;
+	private JButton b[] = { new JButton("hit"), new JButton("stand"),
+			new JButton("start") };
+	private JTextArea area, area_score;
+
+	private JTextField field;
+
+	private int player;
+
+	private int x;
+	private int cpu;
+	private int state_player;
+	private int state_cpu;
+	private boolean out = true;
+	public Apple() { // costruttore campo da gioco
+		area = new JTextArea();
+		field = new JTextField();
+		area_score = new JTextArea();
+
+		area.setName("area");
+		field.setName("field");
+		area_score.setName("area_score");
+
+		add(field);
+		add(area_score);
+		add(area);
+		setLayout(null);
+		setBackground(Color.BLACK);
+		setBounds(100, 80, 520, 300);
+
+		for (int i = 0, y = 0; i < 3; i++, y += 20) {
+			b[i].addActionListener(new Ascoltatore());
+			b[i].setBounds(20, 20 + y, 100, 20);
+			add(b[i]);
+		}
+
+		area.setBounds(140, 20, 325, 200);
+		area.setFont(new Font("Sanserif", Font.ITALIC, 25));
+		area.setBackground(Color.LIGHT_GRAY);
+		area.setEditable(false);
+		field.setEditable(false);
+		field.setBounds(140, 228, 325, 20);
+		field.setFont(new Font("Sanserif", Font.BOLD, 15));
+		field.setBackground(Color.LIGHT_GRAY);
+		area_score.setBackground(Color.GREEN);
+		area_score.setForeground(Color.BLACK);
+		area_score.setFont(new Font("Sanserif", Font.BOLD, 23));
+		area_score.setBounds(20, 120, 95, 90);
+		area_score.setEditable(false);
 	}
 
 	public int control(int p) { // metodo di controllo per stabilire se il
@@ -195,5 +195,13 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 		}
 		cpu = 0;
 	
+	}
+
+	public JTextArea getArea() {
+		return area;
+	}
+
+	public void setArea(JTextArea area) {
+		this.area = area;
 	}
 }

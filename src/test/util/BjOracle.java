@@ -11,46 +11,8 @@ public class BjOracle {
 	private static int cardIndex = 0;
 	private static double cards[];
 	
-	public static boolean playerBusted(String area){
-		int player_score = BjOracle.playerScore(area);
-		return (player_score > 21);
-	}
-	
-	public static boolean cpuWins(String area){
-		int player_score = BjOracle.playerScore(area);
-		int cpu_score=BjOracle.cpuScore(area);
-		
-		return (cpu_score<=21 && cpu_score>player_score);
-	}
-	
 	public static boolean blackJack(String area){
 		return (BjOracle.playerScore(area) == 21);
-	}
-	
-	public static int playerScore(String area){
-		int player_score = 0;
-		String[] player_scores = area.split("\n")[1].substring(1).split(" ");
-		for (int i=0; i<player_scores.length; i++) {
-			player_score += BjOracle.fromCardToScore(player_scores[i]); 
-		}
-		return player_score;
-	}
-	
-	public static int cpuScore(String area){
-		int cpu_score=0;
-		String[] cpu_scores = area.split("\n")[4].substring(1).split(" ");
-		for (int i=0; i<cpu_scores.length; i++) {
-			cpu_score += BjOracle.fromCardToScore(cpu_scores[i]);
-		}
-		return cpu_score;
-	}
-	
-	public static int fromCardToScore(int card){
-		int[] scores = {11,2,3,4,5,6,7,8,9,10,10,10,10};
-		if (card>=1 && card<=13)
-			return scores[card-1];
-		else
-			return 0;
 	}
 	
 	public static int cpuGlobalScore(String area) {
@@ -62,13 +24,28 @@ public class BjOracle {
 		return cpu_score;
 	}
 	
-	public static int playerGlobalScore(String area) {
-		int player_score = 0;
-		if (!area.isEmpty()){
-			String player_score_s = (area.split("\n")[0]).split(" ")[1];
-			player_score=Integer.parseInt(player_score_s);
+	public static int cpuScore(String area){
+		int cpu_score=0;
+		String[] cpu_scores = area.split("\n")[4].substring(1).split(" ");
+		for (int i=0; i<cpu_scores.length; i++) {
+			cpu_score += BjOracle.fromCardToScore(cpu_scores[i]);
 		}
-		return player_score;
+		return cpu_score;
+	}
+	
+	public static boolean cpuWins(String area){
+		int player_score = BjOracle.playerScore(area);
+		int cpu_score=BjOracle.cpuScore(area);
+		
+		return (cpu_score<=21 && cpu_score>player_score);
+	}
+	
+	public static int fromCardToScore(int card){
+		int[] scores = {11,2,3,4,5,6,7,8,9,10,10,10,10};
+		if (card>=1 && card<=13)
+			return scores[card-1];
+		else
+			return 0;
 	}
 	
 	public static int fromCardToScore(String card){
@@ -93,15 +70,53 @@ public class BjOracle {
 		return value;
 	}
 	
-	public static double randomDouble() {
-		return cards[cardIndex];
+	public static String fromCartToSymbol(int card){
+		String[] symbols = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+		if (card>=1 && card<=13)
+			return symbols[card-1];
+		else
+			return null;
 	}
-
+	
+	/**
+	 * @return cards[cardIndex]
+	 */
+	public static double getCard() {
+		return cards[cardIndex++];
+	}
+	
 	/**
 	 * @return cardIndex
 	 */
 	public static int getCardIndex() {
 		return cardIndex;
+	}
+	
+	public static boolean playerBusted(String area){
+		int player_score = BjOracle.playerScore(area);
+		return (player_score > 21);
+	}
+	
+	public static int playerGlobalScore(String area) {
+		int player_score = 0;
+		if (!area.isEmpty()){
+			String player_score_s = (area.split("\n")[0]).split(" ")[1];
+			player_score=Integer.parseInt(player_score_s);
+		}
+		return player_score;
+	}
+
+	public static int playerScore(String area){
+		int player_score = 0;
+		String[] player_scores = area.split("\n")[1].substring(1).split(" ");
+		for (int i=0; i<player_scores.length; i++) {
+			player_score += BjOracle.fromCardToScore(player_scores[i]); 
+		}
+		return player_score;
+	}
+
+	public static double randomDouble() {
+		return cards[cardIndex];
 	}
 
 	/**
@@ -109,13 +124,6 @@ public class BjOracle {
 	 */
 	public static void setcardIndex(int cardIndex) {
 		BjOracle.cardIndex = cardIndex;
-	}
-
-	/**
-	 * @return cards[cardIndex]
-	 */
-	public static double getCard() {
-		return cards[cardIndex++];
 	}
 
 	/**
