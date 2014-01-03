@@ -20,7 +20,7 @@ public class Randomizer implements Randomizable {
 	 * @see blackjack.Randomizable#getRandom()
 	 */
 	@Override
-	public double getRandom() {
+	public double getCard() {
 		return Math.random(); //necessita azzeramento del seme?
 	}
 

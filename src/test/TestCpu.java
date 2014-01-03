@@ -4,9 +4,7 @@
 package test;
 
 import junit.framework.TestCase;
-import test.util.BjOracle;
 import blackjack.Apple;
-import blackjack.Randomizable;
 import blackjack.RandomizerMock;
 
 
@@ -17,29 +15,16 @@ import blackjack.RandomizerMock;
 public class TestCpu extends TestCase {
 	
 	Apple a;
-	Randomizable rand;
+	RandomizerMock rand;
 	
-	/**
-	 * @throws java.lang.Exception
-	 */
-	protected static void setUpBeforeClass() throws Exception {
-		BjOracle.setcardIndex(0);
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	protected static void tearDownAfterClass() throws Exception {
-		BjOracle.setcardIndex(0);
-	}
 
 	/* (non Javadoc)
 	 * @see junit.framework.TestCase#setUp()
 	 */
 	protected void setUp() throws Exception {
 		super.setUp();
-		BjOracle.setcardIndex(0);
 		rand = new RandomizerMock();
+		rand.setcardIndex(0);
 		a = new Apple(rand);
 	}
 
@@ -55,10 +40,10 @@ public class TestCpu extends TestCase {
 	 */
 	public final void testGetCard() {
 		int cards[] = {1,2,3,4,5,6,7,8,9,10,11,12};
-		BjOracle.setCards(cards);
+		rand.setCards(cards);
 
 		for (int i = 0; i < cards.length; i++) {
-			assertEquals(i + 1, (int) (BjOracle.getCard() * 12) + 1);
+			assertEquals(i + 1, (int) (rand.getCard() * 12) + 1);
 		}
 	}
 
@@ -76,7 +61,7 @@ public class TestCpu extends TestCase {
 	 */
 	public final void testCpu01() {
 		int cards[] = {2,2};
-		BjOracle.setCards(cards);
+		rand.setCards(cards);
 		
 		// La dichiarazione di a si trova in cima alla classe, la sua definizione nel metodo setUp, 
 		// in quanto eseguita prima di ogni caso di test

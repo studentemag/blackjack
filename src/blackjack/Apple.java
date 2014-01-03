@@ -228,16 +228,16 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 
 	public void cpu() { // metodo cpu simula la giocata da parte della cpu
 						// tramite un semplice while
-		cpu = (int) (rand.getRandom() * 12) + 1;
+		cpu = (int) (rand.getCard() * 12) + 1;
 		cpu = control(cpu);
-		x = (int) (rand.getRandom() * 12) + 1;
+		x = (int) (rand.getCard() * 12) + 1;
 		x = control(x);
 		cpu += x;
 		while (cpu < player) { // tramite questa istruzione il programma non fa
 								// altro ke generare un numero rand finche la
 								// somma dei valori usciti non supera quella
 								// della giocatore
-			x = (int) (rand.getRandom() * 12) + 1;
+			x = (int) (rand.getCard() * 12) + 1;
 			cpu += control(x);
 		}
 		if (cpu > 21) {

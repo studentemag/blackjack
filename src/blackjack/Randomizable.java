@@ -8,5 +8,5 @@ package blackjack;
  *
  */
 public interface Randomizable {
-	public double getRandom();
+	public double getCard();
 }
