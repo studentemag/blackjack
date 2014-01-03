@@ -69,7 +69,7 @@ public class TestCpu extends TestCase {
 	 * 		-Punteggio partita: Player= 4 CPU= 4
 	 * 
 	 * Output attesi
-	 * 		In caso di parit√† vince la CPU
+	 * 		In caso di parita'† vince la CPU
 	 * 		-Punteggio globale: Player= 5 CPU= 6
 	 * 		-Aree di testo: field= "Lose!" area_score= "Player: 5\n\nCpu: 6"
 	 */
@@ -96,9 +96,56 @@ public class TestCpu extends TestCase {
 		assertEquals("Campo area_score non corretto!", s, a.getArea_score());
 	}
 	
-	public final void testCpu01easymock(){
+	/**
+	 * Metodo di verifica per {@link blackjack.Apple#cpu()}.
+	 * 
+	 * Scenario
+	 * 		-Punteggio globale: Player= 5 CPU= 5
+	 * 		-Punteggio partita: Player= 4 CPU= 4
+	 * 
+	 * Output attesi
+	 * 		In caso di parita'† vince la CPU
+	 * 		-Punteggio globale: Player= 5 CPU= 6
+	 * 		-Aree di testo: field= "Lose!" area_score= "Player: 5\n\nCpu: 6"
+	 */
+	public final void testCpu01easymock() {
 		int cards[]={2,2};
 		for (int i=0;i<cards.length;i++)
+			EasyMock.expect(randeasymock.getCard()).andReturn(BjOracle.fromCardToDouble(cards[i])).once();
+		EasyMock.replay(randeasymock);
+		
+		a2.setPlayer(4);
+		a2.setState_cpu(5);
+		a2.setState_player(5);
+		a2.cpu();
+		
+		//Verifichiamo il corretto aggiornamento dei punteggi globali
+		assertEquals("Punteggio globale Player non corretto!", 5, a2.getState_player());
+		assertEquals("Punteggio globale CPU non corretto!", 6, a2.getState_cpu());
+		
+		//Verifichiamo che l'esito della partita sia visualizato correttamente
+		assertEquals("Campo field non corretto!", "Lose!", a2.getField());
+		
+		//Verifichiamo che i nuovi punteggi globali siano visualizzati correttamente
+		String s = new String("Player: " + 5 + "\n\nCpu: " + 6);
+		assertEquals("Campo area_score non corretto!", s, a2.getArea_score());
+	}
+	
+	/**
+	 * Metodo di verifica per {@link blackjack.Apple#cpu()}.
+	 * 
+	 * Scenario
+	 * 		-Punteggio globale: Player= 5 CPU= 5
+	 * 		-Punteggio partita: Player= 4 CPU= 4
+	 * 
+	 * Output attesi
+	 * 		In caso di parita'† vince la CPU
+	 * 		-Punteggio globale: Player= 5 CPU= 6
+	 * 		-Aree di testo: field= "Lose!" area_score= "Player: 5\n\nCpu: 6"
+	 */
+	public final void testCpu02easymock() {
+		int cards[] = {2,2};
+		for (int i = 0; i < cards.length; i++)
 			EasyMock.expect(randeasymock.getCard()).andReturn(BjOracle.fromCardToDouble(cards[i])).once();
 		EasyMock.replay(randeasymock);
 		
