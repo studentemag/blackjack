@@ -23,34 +23,6 @@ public class TestControl extends TestCase {
 	
 	public void testControl1() throws Exception {
 		try {
-			int card = 1;
-			String areaText = "hello";
-			int result = runTestWithParameters(card, areaText);
-			assertEquals(BjOracle.fromCardToScore(card), result);
-			assertEquals(areaText + " " + BjOracle.fromCartToSymbol(card),
-					unitUnderTest.getArea().getText());
-		} catch (Exception e) {
-			throw e;
-		}
-
-	}
-
-	public void testControl2() throws Exception {
-		try {
-			int card = 2;
-			String areaText = "hello";
-			int result = runTestWithParameters(card, areaText);
-			assertEquals(BjOracle.fromCardToScore(card), result);
-			assertEquals(areaText + " " + BjOracle.fromCartToSymbol(card),
-					unitUnderTest.getArea().getText());
-		} catch (Exception e) {
-			throw e;
-		}
-
-	}
-
-	public void testControl3() throws Exception {
-		try {
 			int card = 5;
 			String areaText = "hello";
 			int result = runTestWithParameters(card, areaText);
@@ -62,10 +34,10 @@ public class TestControl extends TestCase {
 		}
 
 	}
-
-	public void testControl4() throws Exception {
+	
+	public void testControl2() throws Exception {
 		try {
-			int card = 10;
+			int card = 1;
 			String areaText = "hello";
 			int result = runTestWithParameters(card, areaText);
 			assertEquals(BjOracle.fromCardToScore(card), result);
@@ -76,8 +48,8 @@ public class TestControl extends TestCase {
 		}
 
 	}
-
-	public void testControl5() throws Exception {
+	
+	public void testControl3() throws Exception {
 		try {
 			int card = 11;
 			String areaText = "hello";
@@ -90,8 +62,8 @@ public class TestControl extends TestCase {
 		}
 
 	}
-
-	public void testControl6() throws Exception {
+	
+	public void testControl4() throws Exception {
 		try {
 			int card = 12;
 			String areaText = "hello";
@@ -105,7 +77,7 @@ public class TestControl extends TestCase {
 
 	}
 
-	public void testControl7() throws Exception {
+	public void testControl5() throws Exception {
 		try {
 			int card = 13;
 			String areaText = "hello";
@@ -113,6 +85,56 @@ public class TestControl extends TestCase {
 			assertEquals(BjOracle.fromCardToScore(card), result);
 			assertEquals(areaText + " " + BjOracle.fromCartToSymbol(card),
 					unitUnderTest.getArea().getText());
+		} catch (Exception e) {
+			throw e;
+		}
+
+	}
+
+	public void testControl6() throws Exception {
+		try {
+			int card = 10;
+			String areaText = "hello";
+			int result = runTestWithParameters(card, areaText);
+			assertEquals(BjOracle.fromCardToScore(card), result);
+			assertEquals(areaText + " " + BjOracle.fromCartToSymbol(card),
+					unitUnderTest.getArea().getText());
+		} catch (Exception e) {
+			throw e;
+		}
+
+	}
+
+	public void testControl7() throws Exception {
+		try {
+			int card = 2;
+			String areaText = "hello";
+			int result = runTestWithParameters(card, areaText);
+			assertEquals(BjOracle.fromCardToScore(card), result);
+			assertEquals(areaText + " " + BjOracle.fromCartToSymbol(card),
+					unitUnderTest.getArea().getText());
+		} catch (Exception e) {
+			throw e;
+		}
+
+	}
+	
+	public void testControl8() throws Exception {
+		try {
+			int card = 0;
+			String areaText = "hello";
+			runTestWithParameters(card, areaText);
+		} catch (Exception e) {
+			throw e;
+		}
+
+	}
+	
+	public void testControl9() throws Exception {
+		try {
+			int card = 14;
+			String areaText = "hello";
+			runTestWithParameters(card, areaText);
 		} catch (Exception e) {
 			throw e;
 		}

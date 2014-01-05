@@ -1,5 +1,5 @@
 group testControl[us=true] {
-	int card = [1,2,5,10,11,12,13];
+	int card = [5,1,11,12,13,10,2];
 	String areaText="hello";
 	
 	int result = runTestWithParameters(card,areaText);
