@@ -159,13 +159,11 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 		if (cpu > 21) {
 			field.setText("Win!");
 			state_player += 1;
-			area_score.setText("Player: " + state_player + "\n\nCpu: "
-					+ state_cpu);
+			area_score.setText("Player: " + state_player + "\n\nCpu: " + state_cpu);
 		} else {
 			field.setText("Lose!");
 			state_cpu += 1;
-			area_score.setText("Player: " + state_player + "\n\nCpu: "
-					+ state_cpu);
+			area_score.setText("Player: " + state_player + "\n\nCpu: " + state_cpu);
 		}
 		cpu = 0;
 
