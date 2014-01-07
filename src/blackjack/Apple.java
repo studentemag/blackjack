@@ -24,9 +24,9 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 			if (tmp == "start") {
 				field.setText("");
 				area.setText("Player\n");
-				player = 1 + (int) (Math.random() * 12) + 1;
+				player = 1 + (int) (rand.getCard()* 12) + 1;
 				player = control(player);
-				x = (int) (Math.random() * 12) + 1;
+				x = (int) (rand.getCard() * 12) + 1;
 				x = control(x);
 				player += x;
 				if (player == 21)
@@ -36,7 +36,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 
 			if (tmp == "stand") {
 				if (out != true) {
-					x = (int) (Math.random() * 12) + 1;
+					x = (int) (rand.getCard() * 12) + 1;
 					x = control(x);
 					player += x;
 					if (player > 20) {
