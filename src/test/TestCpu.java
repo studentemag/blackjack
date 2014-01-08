@@ -493,7 +493,7 @@ public class TestCpu extends TestCase {
 	public final void testCpu09easymock() {
 		//Precondizioni sull'oggetto di tipo Apple
 		int playerIn = 12;
-		int cards[] = {2, 2, 7, 1}; //Punteggio CPU pari a 22
+		int cards[] = {2, 9, 1}; //Punteggio CPU pari a 22
 		int state_playerIn = 5;
 		int state_cpuIn = 5;
 		
@@ -580,61 +580,13 @@ public class TestCpu extends TestCase {
 	 * 
 	 * Scenario
 	 * 		-Punteggio globale: Player= 5 CPU= 5
-	 * 		-Punteggio partita: Player= 21 CPU= 23
-	 * 
-	 * Output attesi
-	 * 		-Punteggio globale: Player= 6 CPU= 5
-	 * 		-Aree di testo: field= "Win!" area_score= "Player: 6\n\nCpu: 5"
-	 */
-	public final void testCpu11easymock() {
-		//Precondizioni sull'oggetto di tipo Apple
-		int playerIn = 21;
-		int cards[] = {2, 2, 6, 5, 8}; //Punteggio CPU pari a 23
-		int state_playerIn = 5;
-		int state_cpuIn = 5;
-		
-		//Postcondizioni sull'oggetto di tipo Apple
-		int state_playerExp = 6;
-		int state_cpuExp = 5;
-		String fieldExp = new String(BjOracle.winString);
-		
-		//Definizione del comportamento del mock
-		for (int i = 0; i < cards.length; i++)
-			EasyMock.expect(randeasymock.getCard()).andReturn(BjOracle.fromCardToDouble(cards[i])).once();
-		EasyMock.replay(randeasymock);
-		
-		//Settaggio dello stato dell'oggetto Apple
-		a2.setPlayer(playerIn);
-		a2.setState_player(state_playerIn);
-		a2.setState_cpu(state_cpuIn);
-		
-		//Invocazione del metodo sotto test
-		a2.cpu();
-		
-		//Verifichiamo il corretto aggiornamento dei punteggi globali
-		assertEquals("Punteggio globale Player non corretto!", state_playerExp, a2.getState_player());
-		assertEquals("Punteggio globale CPU non corretto!", state_cpuExp, a2.getState_cpu());
-		
-		//Verifichiamo che l'esito della partita sia visualizato correttamente
-		assertEquals("Campo field non corretto!", fieldExp, a2.getFieldText());
-		
-		//Verifichiamo che i nuovi punteggi globali siano visualizzati correttamente
-		assertEquals("Visualizzazione punteggio globale Player non corretto!", state_playerExp, BjOracle.playerGlobalScore((a2.getArea_scoreText())));
-		assertEquals("Visualizzazione punteggio globale CPU non corretto!", state_cpuExp, BjOracle.cpuGlobalScore(a2.getArea_scoreText()));
-	}
-	
-	/**
-	 * Metodo di verifica per {@link blackjack.Apple#cpu()}.
-	 * 
-	 * Scenario
-	 * 		-Punteggio globale: Player= 5 CPU= 5
 	 * 		-Punteggio partita: Player= 21 CPU= 22
 	 * 
 	 * Output attesi
 	 * 		-Punteggio globale: Player= 6 CPU= 5
 	 * 		-Aree di testo: field= "Win!" area_score= "Player: 6\n\nCpu: 5"
 	 */
-	public final void testCpu12easymock() {
+	public final void testCpu11easymock() {
 		//Precondizioni sull'oggetto di tipo Apple
 		int playerIn = 21;
 		int cards[] = {1, 1}; //Punteggio CPU pari a 22 (coppia d'assi)
@@ -683,7 +635,7 @@ public class TestCpu extends TestCase {
 	 * 		-Punteggio globale: Player= 5 CPU= 6
 	 * 		-Aree di testo: field= "Lose!" area_score= "Player: 5\n\nCpu: 6"
 	 */
-	public final void testCpu13easymock() {
+	public final void testCpu12easymock() {
 		//Precondizioni sull'oggetto di tipo Apple
 		int playerIn = 21;
 		int cards[] = {1, 12}; //Punteggio CPU pari a 21
@@ -694,6 +646,54 @@ public class TestCpu extends TestCase {
 		int state_playerExp = 5;
 		int state_cpuExp = 6;
 		String fieldExp = new String(BjOracle.loseString);
+		
+		//Definizione del comportamento del mock
+		for (int i = 0; i < cards.length; i++)
+			EasyMock.expect(randeasymock.getCard()).andReturn(BjOracle.fromCardToDouble(cards[i])).once();
+		EasyMock.replay(randeasymock);
+		
+		//Settaggio dello stato dell'oggetto Apple
+		a2.setPlayer(playerIn);
+		a2.setState_player(state_playerIn);
+		a2.setState_cpu(state_cpuIn);
+		
+		//Invocazione del metodo sotto test
+		a2.cpu();
+		
+		//Verifichiamo il corretto aggiornamento dei punteggi globali
+		assertEquals("Punteggio globale Player non corretto!", state_playerExp, a2.getState_player());
+		assertEquals("Punteggio globale CPU non corretto!", state_cpuExp, a2.getState_cpu());
+		
+		//Verifichiamo che l'esito della partita sia visualizato correttamente
+		assertEquals("Campo field non corretto!", fieldExp, a2.getFieldText());
+		
+		//Verifichiamo che i nuovi punteggi globali siano visualizzati correttamente
+		assertEquals("Visualizzazione punteggio globale Player non corretto!", state_playerExp, BjOracle.playerGlobalScore((a2.getArea_scoreText())));
+		assertEquals("Visualizzazione punteggio globale CPU non corretto!", state_cpuExp, BjOracle.cpuGlobalScore(a2.getArea_scoreText()));
+	}
+	
+	/**
+	 * Metodo di verifica per {@link blackjack.Apple#cpu()}.
+	 * 
+	 * Scenario
+	 * 		-Punteggio globale: Player= 5 CPU= 5
+	 * 		-Punteggio partita: Player= 21 CPU= 23
+	 * 
+	 * Output attesi
+	 * 		-Punteggio globale: Player= 6 CPU= 5
+	 * 		-Aree di testo: field= "Win!" area_score= "Player: 6\n\nCpu: 5"
+	 */
+	public final void testCpu13easymock() {
+		//Precondizioni sull'oggetto di tipo Apple
+		int playerIn = 21;
+		int cards[] = {2, 2, 6, 5, 8}; //Punteggio CPU pari a 23
+		int state_playerIn = 5;
+		int state_cpuIn = 5;
+		
+		//Postcondizioni sull'oggetto di tipo Apple
+		int state_playerExp = 6;
+		int state_cpuExp = 5;
+		String fieldExp = new String(BjOracle.winString);
 		
 		//Definizione del comportamento del mock
 		for (int i = 0; i < cards.length; i++)
