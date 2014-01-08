@@ -43,13 +43,11 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 						field.setText("Busted!");
 						out = true;
 						state_cpu += 1;
-						area_score.setText("Player: " + state_player
-								+ "\n\nCpu: " + state_cpu);
+						area_score.setText("Player: " + state_player + "\n\nCpu: " + state_cpu);
 					} else if (player == 21)
 						field.setText("BlackJack!");
 				} else
-					JOptionPane.showMessageDialog(null, "push start!", "",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "push start!", "", JOptionPane.ERROR_MESSAGE);
 			}
 			if (tmp == "stand") {
 				if (out != true) {
@@ -57,8 +55,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 					area.setText(area.getText() + "\n\nCpu\n");
 					cpu();
 				} else
-					JOptionPane.showMessageDialog(null, "push start!", "",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "push start!", "", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 
