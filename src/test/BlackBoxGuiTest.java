@@ -1,7 +1,5 @@
 package test;
 
-import org.junit.Before;
-import org.junit.Test;
 import org.uispec4j.Button;
 import org.uispec4j.TextBox;
 import org.uispec4j.Trigger;

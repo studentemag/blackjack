@@ -80,7 +80,10 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	private boolean out = true;
 	private Randomizable rand;
 	
+	private Ascoltatore ascoltatore;
+
 	public Apple(Randomizable rand) { // costruttore campo da gioco
+		ascoltatore = new Ascoltatore();
 		area = new JTextArea();
 		field = new JTextField();
 		area_score = new JTextArea();
@@ -99,7 +102,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 		setBounds(100, 80, 520, 300);
 
 		for (int i = 0, y = 0; i < 3; i++, y += 20) {
-			b[i].addActionListener(new Ascoltatore());
+			b[i].addActionListener(ascoltatore);
 			b[i].setBounds(20, 20 + y, 100, 20);
 			add(b[i]);
 		}
@@ -260,5 +263,17 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	 */
 	public void setState_player(int state_player) {
 		this.state_player = state_player;
+	}
+	
+	public Ascoltatore getAscoltatore() {
+		return ascoltatore;
+	}
+
+	public boolean isOut() {
+		return out;
+	}
+
+	public void setOut(boolean out) {
+		this.out = out;
 	}
 }
