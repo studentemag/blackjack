@@ -1,5 +1,7 @@
 package test;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.uispec4j.Button;
 import org.uispec4j.TextBox;
 import org.uispec4j.Trigger;
@@ -20,7 +22,6 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	private enum State {
 		INIT, ERROR, PLAY, UNDEFINED
 	};
-	
 	
 	protected void setUp() throws Exception {
 		//	We then tell this class that it needs to run the blackjack application 
@@ -73,7 +74,6 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	/*
 	 * Transition 1
 	 */
-	
 	private void moveToPlay(){
 		boolean traversed = false;
 		do {
