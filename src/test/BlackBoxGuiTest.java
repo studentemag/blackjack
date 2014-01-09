@@ -13,6 +13,8 @@ import test.util.BjOracle;
 import blackjack.Black;
 
 public class BlackBoxGuiTest extends UISpecTestCase {
+	private final int maxIterations=10000;
+	
 	Window window, dialog;
 	TextBox area, area_score, field;
 	Button startButton, hitButton, standButton;
@@ -69,10 +71,8 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 		return state;
 	}
 	
-	/*
-	 * Transition 1
-	 */
 	private void moveToPlay(){
+		int iterations=0;
 		boolean traversed = false;
 		do {
 			startButton.click();
@@ -81,9 +81,13 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 			else
 				traversed=true;
 			
-		} while ( !traversed );
+		} while ( !traversed && ++iterations < maxIterations);
+		assertTrue(iterations < maxIterations);
 	}
 	
+	/*
+	 * Transition 1
+	 */
 	public void testTransition1(){	
 		assertEquals(State.INIT,currentState());
 		
@@ -100,8 +104,9 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	public void testTransition2(){
 		assertEquals(State.INIT,currentState());
 		int cpu_global_score=0;
-		boolean traversed = false;
 		
+		int iterations=0;
+		boolean traversed = false;
 		do {
 			cpu_global_score=BjOracle.cpuGlobalScore(area_score.getText());
 			startButton.click();
@@ -110,8 +115,8 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 			else
 				traversed=true;
 			
-		} while ( !traversed );
-		
+		} while ( !traversed && ++iterations < maxIterations);
+		assertTrue(iterations < maxIterations);
 		assertEquals(State.INIT,currentState());
 		assertEquals(BjOracle.bjWinString,field.getText());
 		assertEquals(cpu_global_score+1,BjOracle.cpuGlobalScore(area_score.getText()));
@@ -187,11 +192,12 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	public void testTransition6(){
 		moveToPlay();
 		assertEquals(State.PLAY,currentState());		
+		int iterations=0;
 		do {
 			startButton.click();
 		}
-		while (BjOracle.blackJack(area.getText()));
-		
+		while (BjOracle.blackJack(area.getText()) && ++iterations < maxIterations);
+		assertTrue(iterations < maxIterations);
 		assertEquals(State.PLAY,currentState());
 
 		assertFalse(area.getText().isEmpty());
@@ -206,10 +212,13 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 		assertEquals(State.PLAY,currentState());
 		
 		int player_global_score=BjOracle.playerGlobalScore(area_score.getText());
+		int iterations=0;
 		do {
 			startButton.click();
 		}
-		while (!BjOracle.blackJack(area.getText()));
+		while (!BjOracle.blackJack(area.getText()) && ++iterations < maxIterations);
+		assertTrue(iterations < maxIterations);
+		
 		assertEquals(State.INIT,currentState());
 		
 		assertFalse(area.getText().isEmpty());
@@ -223,6 +232,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	public void testTransition8(){
 		int player_score;
 		
+		int iterations=0;
 		do {			
 			moveToPlay();
 			assertEquals(State.PLAY,currentState());
@@ -230,8 +240,8 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 			player_score=BjOracle.playerScore(area.getText());
 			hitButton.click();
 		}
-		while (BjOracle.playerBusted(area.getText()) || BjOracle.blackJack(area.getText()));
-		
+		while ((BjOracle.playerBusted(area.getText()) || BjOracle.blackJack(area.getText())) && ++iterations < maxIterations);
+		assertTrue(iterations < maxIterations);
 		assertEquals(State.PLAY,currentState());
 		assertTrue(player_score<BjOracle.playerScore(area.getText()));
 	}
@@ -241,6 +251,8 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	 */
 	public void testTransition9(){
 		int cpu_global_score;
+		
+		int iterations=0;
 		do {
 			moveToPlay();
 			assertEquals(State.PLAY,currentState());
@@ -248,7 +260,8 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 			cpu_global_score=BjOracle.cpuGlobalScore(area_score.getText());
 			hitButton.click();
 		}
-		while (!BjOracle.playerBusted(area.getText()) || BjOracle.blackJack(area.getText()));
+		while ((!BjOracle.playerBusted(area.getText()) || BjOracle.blackJack(area.getText())) && ++iterations < maxIterations);
+		assertTrue(iterations < maxIterations);
 		assertEquals(State.INIT,currentState());
 		assertEquals(BjOracle.bustedString,field.getText());
 		assertEquals(cpu_global_score+1,BjOracle.cpuGlobalScore(area_score.getText()));
@@ -259,6 +272,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	 */
 	public void testTransition10(){
 		int player_score;
+		int iterations=0;
 		do {
 			moveToPlay();
 			assertEquals(State.PLAY,currentState());
@@ -266,7 +280,8 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 			player_score=BjOracle.playerScore(area.getText());
 			hitButton.click();
 		}
-		while (BjOracle.playerBusted(area.getText()) || !BjOracle.blackJack(area.getText()));
+		while ((BjOracle.playerBusted(area.getText()) || !BjOracle.blackJack(area.getText())) && ++iterations < maxIterations);
+		assertTrue(iterations < maxIterations);
 		assertEquals(State.PLAY,currentState());
 		assertEquals(BjOracle.bjString,field.getText());
 		assertTrue(player_score<BjOracle.playerScore(area.getText()));
@@ -278,6 +293,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	public void testTransition11(){
 		int player_global_score;
 		int cpu_global_score;
+		int iterations=0;
 		do {
 			moveToPlay();
 			assertEquals(State.PLAY,currentState());
@@ -286,7 +302,8 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 			cpu_global_score=BjOracle.cpuGlobalScore(area_score.getText());
 			standButton.click();
 		}
-		while ( BjOracle.cpuWins(area.getText()) );
+		while ( BjOracle.cpuWins(area.getText()) && ++iterations < maxIterations);
+		assertTrue(iterations < maxIterations);
 		assertEquals(State.INIT,currentState());
 		assertEquals(BjOracle.winString,field.getText());
 		assertEquals(player_global_score+1, 
@@ -301,6 +318,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	public void testTransition12(){
 		int player_global_score;
 		int cpu_global_score;
+		int iterations=0;
 		do {
 			moveToPlay();
 			assertEquals(State.PLAY,currentState());
@@ -309,7 +327,8 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 			cpu_global_score=BjOracle.cpuGlobalScore(area_score.getText());
 			standButton.click();
 		}
-		while ( !BjOracle.cpuWins(area.getText()) );
+		while ( !BjOracle.cpuWins(area.getText()) && ++iterations < maxIterations );
+		assertTrue(iterations < maxIterations);
 		assertEquals(State.INIT,currentState());
 		assertEquals(BjOracle.loseString,field.getText());
 		assertEquals(player_global_score, 

@@ -10,7 +10,8 @@ public class Black extends JFrame { // eredito i metodi e gli attributi della
 	public Black() { // costruttore
 		setTitle("BlackJack ??? ??? ??? ??? ");
 		Randomizable rand = new Randomizer();
-		Apple tuna = new Apple(rand);
+		ModalDialogShower dialogShower= new ModalDialogShowerImpl();
+		Apple tuna = new Apple(rand,dialogShower);
 		add(tuna);
 		setBounds(100, 80, 500, 300);
 		setVisible(true);

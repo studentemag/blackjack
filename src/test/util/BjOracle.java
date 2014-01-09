@@ -23,9 +23,12 @@ public class BjOracle {
 	
 	public static int cpuScore(String area){
 		int cpu_score=0;
-		String[] cpu_scores = area.split("\n")[4].substring(1).split(" ");
-		for (int i=0; i<cpu_scores.length; i++) {
-			cpu_score += BjOracle.fromCardToScore(cpu_scores[i]);
+		String[] area_splitted = area.split("\n");
+		if (!(area_splitted.length<4)) {
+			String[] cpu_scores = area.split("\n")[4].substring(1).split(" ");
+			for (int i=0; i<cpu_scores.length; i++) {
+				cpu_score += BjOracle.fromCardToScore(cpu_scores[i]);
+			}
 		}
 		return cpu_score;
 	}

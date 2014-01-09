@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -48,8 +47,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 					} else if (player == 21)
 						field.setText("BlackJack!");
 				} else
-					JOptionPane.showMessageDialog(null, "push start!", "",
-							JOptionPane.ERROR_MESSAGE);
+					dialogShower.showErrorMessage();
 			}
 			if (tmp == "hit") {
 				if (out != true) {
@@ -57,8 +55,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 					area.setText(area.getText() + "\n\nCpu\n");
 					cpu();
 				} else
-					JOptionPane.showMessageDialog(null, "push start!", "",
-							JOptionPane.ERROR_MESSAGE);
+					dialogShower.showErrorMessage();
 			}
 		}
 
@@ -79,16 +76,18 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	private int state_cpu;
 	private boolean out = true;
 	private Randomizable rand;
+	private ModalDialogShower dialogShower;
 	
 	private Ascoltatore ascoltatore;
 
-	public Apple(Randomizable rand) { // costruttore campo da gioco
+	public Apple(Randomizable rand, ModalDialogShower dialogShower) { // costruttore campo da gioco
 		ascoltatore = new Ascoltatore();
 		area = new JTextArea();
 		field = new JTextField();
 		area_score = new JTextArea();
 		
 		this.rand = rand;
+		this.dialogShower = dialogShower;
 
 		area.setName("area");
 		field.setName("field");
