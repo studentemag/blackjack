@@ -222,6 +222,14 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	public void setArea(JTextArea area) {
 		this.area = area;
 	}
+	
+	public void setAreaText(String area) {
+		this.area.setText(area);
+	}
+	
+	public String getAreaText() {
+		return this.area.getText();
+	}
 
 	/**
 	 * @param area_score area_score da impostare

@@ -23,18 +23,28 @@ public class TestBbActionPerformed {
 	ModalDialogShower dialogShowerMock;
 	Randomizable randeasymock;
 	
-	boolean out,outExp, valid;
-	int player,state_player,state_cpu;
+	// Input variables
+	boolean out;
+	int player, state_player, state_cpu;
 	Integer cards[];
-	int playerExp, state_cpuExp,area_score_playerExp, area_score_cpuExp;
-
 	ActionEvent e;
-	String fieldExp="";
+	String area;
+	
+	// Expected output variables
+	boolean outExp;
+	int playerExp, state_cpuExp,area_score_playerExp, area_score_cpuExp;
+	String fieldExp, areaExp;
+	
+
+	
+	// Utility variables
+	boolean valid;
 	
 	public TestBbActionPerformed(
-		boolean out, int player, Integer cards[], String command, int state_player, int state_cpu,
+		boolean out, int player, Integer cards[], String command, 
+		int state_player, int state_cpu, String area,
 		int playerExp, boolean outExp, String fieldExp, int state_cpuExp, 
-		int area_score_playerExp, int area_score_cpuExp, boolean valid
+		int area_score_playerExp, int area_score_cpuExp, String areaExp, boolean valid
 	) {
 		super();
 		this.out = out;
@@ -49,6 +59,8 @@ public class TestBbActionPerformed {
 		this.e = new ActionEvent(this,0,command);
 		this.fieldExp = fieldExp;
 		this.area_score_cpuExp=area_score_cpuExp;
+		this.area=area;
+		this.areaExp=areaExp;
 		this.valid=valid;
 	}
 	
@@ -59,17 +71,29 @@ public class TestBbActionPerformed {
 		// These data are hard-coded into the class, but they could be
 		// generated or loaded in any way you like.
 		return Arrays.asList(new Object[][] { 
-				{false,12,new Integer[] {8},"hit",0,0,20,false,"",0,0,0,true}, //0
-				{true,12,new Integer[] {8}, "hit",0,0,0,false,null,0,0,0,true}, //1
-				{false,24,new Integer[] {8}, "hit",0,0,0,false,null,0,0,0,false}, //2
-				{false,-1, new Integer[] {8},"hit",0,0,0,false,null,0,0,0,false}, //3
-				{false,12, new Integer[] {-1},"hit",0,0,0,false,null,0,0,0,false}, //4
-				{false,12, new Integer[] {15},"hit",0,0,0,false,null,0,0,0,false}, //5
-				{false,12,new Integer[] {8,8},"stand",0,0,12,true,BjOracle.loseString,1,0,1,true}, //6
-				{false,12,new Integer[] {8,8},"start",0,0,16,false,"",0,0,0,true}, //7
-				{false,12,new Integer[] {8},"hello",0,0,0,false,null,0,0,0,false}, //8
-				{false,12,new Integer[] {8},"hit",-1,0,0,false,null,0,0,0,false}, //9
-				{false,12,new Integer[] {8},"hit",0,-1,0,false,null,0,0,0,false} //10
+				{false,7,new Integer[] {8},"hit",0,0,"hello",15,false,"",0,0,0,"hello 8",true}, //0
+				{true,7,new Integer[] {8},"hit",0,0,"hello",0,false,null,0,0,0,null,true}, //1
+				{false,24,new Integer[]{8},"hit",0,0,"hello",0,false,null,0,0,0,null,false}, //2
+				{false,-1,new Integer[]{8},"hit",0,0,"hello",0,false,null,0,0,0,null,false}, //3
+				{false,7,new Integer[]{1},"hit",0,0,"hello",18,false,"",0,0,0,"hello A",true}, //4
+				{false,7,new Integer[]{2},"hit",0,0,"hello",9,false,"",0,0,0,"hello 2",true}, //5
+				{false,7,new Integer[]{3},"hit",0,0,"hello",10,false,"",0,0,0,"hello 3",true}, //6
+				{false,7,new Integer[]{4},"hit",0,0,"hello",11,false,"",0,0,0,"hello 4",true}, //7
+				{false,7,new Integer[]{5},"hit",0,0,"hello",12,false,"",0,0,0,"hello 5",true}, //8
+				{false,7,new Integer[]{6},"hit",0,0,"hello",13,false,"",0,0,0,"hello 6",true}, //9
+				{false,7,new Integer[]{7},"hit",0,0,"hello",14,false,"",0,0,0,"hello 7",true}, //10
+				{false,7,new Integer[]{9},"hit",0,0,"hello",16,false,"",0,0,0,"hello 9",true}, //11
+				{false,7,new Integer[]{10},"hit",0,0,"hello",17,false,"",0,0,0,"hello 10",true}, //12
+				{false,7,new Integer[]{11},"hit",0,0,"hello",18,false,"",0,0,0,"hello J",true}, //13
+				{false,7,new Integer[]{12},"hit",0,0,"hello",19,false,"",0,0,0,"hello Q",true}, //14
+				{false,7,new Integer[]{13},"hit",0,0,"hello",20,false,"",0,0,0,"hello K",true}, //15
+				{false,7,new Integer[]{-1},"hit",0,0,"hello",0,false,null,0,0,0,null,false}, //16
+				{false,7,new Integer[]{15},"hit",0,0,"hello",0,false,null,0,0,0,null,false}, //17
+				{false,7,new Integer[] {8,8},"stand",0,0,"hello",7,true,"Lose!",1,0,1,"hello 8 8\n\nCpu\n 8",true}, //18
+				{false,7,new Integer[] {8,8},"start",0,0,"hello",16,false,"",0,0,0,"Player\n 8 8",true}, //19
+				{false,7,new Integer[]{8},"hello",0,0,"hello",0,false,null,0,0,0,null,false}, //20
+				{false,7,new Integer[]{8},"hit",-1,0,"hello",0,false,null,0,0,0,null,false}, //21
+				{false,7,new Integer[]{8},"hit",0,-1,"hello",0,false,null,0,0,0,null,false} //22
 		});
 	}
 
@@ -99,6 +123,7 @@ public class TestBbActionPerformed {
 		apple.setPlayer(player);
 		apple.setState_player(state_player);
 		apple.setState_cpu(state_cpu);
+		apple.setAreaText(area);
 		
 		apple.getAscoltatore().actionPerformed(e);
 		
@@ -107,7 +132,8 @@ public class TestBbActionPerformed {
 		Assert.assertEquals(fieldExp, apple.getFieldText() );
 		Assert.assertEquals(state_cpuExp, apple.getState_cpu());
 		Assert.assertEquals(area_score_playerExp, BjOracle.playerGlobalScore(apple.getArea_scoreText()));
-		Assert.assertEquals(area_score_cpuExp, BjOracle.cpuGlobalScore(apple.getArea_scoreText()));	
+		Assert.assertEquals(area_score_cpuExp, BjOracle.cpuGlobalScore(apple.getArea_scoreText()));
+		Assert.assertEquals(areaExp,apple.getAreaText());
 	}
 	
 	public void testInvalid(){
@@ -118,7 +144,8 @@ public class TestBbActionPerformed {
 		apple.setPlayer(player);
 		apple.setState_player(state_player);
 		apple.setState_cpu(state_cpu);
-	
+		apple.setAreaText(area);
+		
 		apple.getAscoltatore().actionPerformed(e);
 		
 	}
@@ -131,6 +158,7 @@ public class TestBbActionPerformed {
 		apple.setPlayer(player);
 		apple.setState_player(state_player);
 		apple.setState_cpu(state_cpu);
+		apple.setAreaText(area);
 		
 		apple.getAscoltatore().actionPerformed(e);	
 	}
