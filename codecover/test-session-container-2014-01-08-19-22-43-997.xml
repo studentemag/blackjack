@@ -1,0 +1,1486 @@
+<?xml version="1.0" encoding="UTF-8"?><TestSessionContainer xmlns="http://www.codecover.org/xml/testsession-container" Date="1389205363979" TestSessionContainerId="7f30fb29-b471-4472-a39e-253a9d6b0972" version="1.0">
+<SrcFileList>
+<SrcFile Content="/**&#13;&#10; * &#13;&#10; */&#13;&#10;package blackjack;&#13;&#10;&#13;&#10;/**&#13;&#10; * @author Mario&#13;&#10; *&#13;&#10; */&#13;&#10;public class Randomizer implements Randomizable {&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * &#13;&#10;&#9; */&#13;&#10;&#9;public Randomizer() {&#13;&#10;&#9;&#9;// TODO Stub di costruttore generato automaticamente&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/* (non Javadoc)&#13;&#10;&#9; * @see blackjack.Randomizable#getRandom()&#13;&#10;&#9; */&#13;&#10;&#9;@Override&#13;&#10;&#9;public double getCard() {&#13;&#10;&#9;&#9;return Math.random(); //necessita azzeramento del seme?&#13;&#10;&#9;}&#13;&#10;&#13;&#10;}&#13;&#10;" Filename="Randomizer.java" Intrnl_Id="1"/>
+<SrcFile Content="/**&#13;&#10; * &#13;&#10; */&#13;&#10;package blackjack;&#13;&#10;&#13;&#10;/**&#13;&#10; * @author Mario&#13;&#10; *&#13;&#10; */&#13;&#10;public interface Randomizable {&#13;&#10;&#9;public double getCard();&#13;&#10;}&#13;&#10;" Filename="Randomizable.java" Intrnl_Id="2"/>
+<SrcFile Content="package blackjack;&#13;&#10;&#13;&#10;import javax.swing.JFrame;&#13;&#10;&#13;&#10;public class Black extends JFrame { // eredito i metodi e gli attributi della&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// classe JFrame&#13;&#10;&#13;&#10;&#9;private static final long serialVersionUID = 3781469417039574636L;&#13;&#10;&#13;&#10;&#9;public Black() { // costruttore&#13;&#10;&#9;&#9;setTitle(&quot;BlackJack ??? ??? ??? ??? &quot;);&#13;&#10;&#9;&#9;Randomizable rand = new Randomizer();&#13;&#10;&#9;&#9;Apple tuna = new Apple(rand);&#13;&#10;&#9;&#9;add(tuna);&#13;&#10;&#9;&#9;setBounds(100, 80, 500, 300);&#13;&#10;&#9;&#9;setVisible(true);&#13;&#10;&#9;&#9;setResizable(false);&#13;&#10;&#9;&#9;setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);&#13;&#10;&#9;}&#13;&#10;&#10;&#9;public static void main(String[] args) { // richiamo del costruttore&#13;&#10;&#9;&#9;new Black();&#13;&#10;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;}&#13;&#10;" Filename="Black.java" Intrnl_Id="3"/>
+<SrcFile Content="package blackjack;&#13;&#10;&#13;&#10;import java.awt.Color;&#13;&#10;import java.awt.Font;&#13;&#10;import java.awt.event.ActionEvent;&#13;&#10;import java.awt.event.ActionListener;&#13;&#10;&#13;&#10;import javax.swing.JButton;&#13;&#10;import javax.swing.JOptionPane;&#13;&#10;import javax.swing.JPanel;&#13;&#10;import javax.swing.JTextArea;&#13;&#10;import javax.swing.JTextField;&#13;&#10;&#13;&#10;&#13;&#10;public class Apple extends JPanel { // la classe apple eredita i metodi e gli&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// attributi della classe JPanel&#13;&#10;&#13;&#10;&#9;public class Ascoltatore implements ActionListener { // eredito il metodo&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// ActionPerformed&#13;&#10;&#13;&#10;&#9;&#9;public void actionPerformed(ActionEvent e) {&#13;&#10;&#9;&#9;&#9;String tmp = e.getActionCommand();&#13;&#10;&#13;&#10;&#9;&#9;&#9;if (tmp == &quot;start&quot;) {&#13;&#10;&#9;&#9;&#9;&#9;field.setText(&quot;&quot;);&#13;&#10;&#9;&#9;&#9;&#9;area.setText(&quot;Player\n&quot;);&#13;&#10;&#9;&#9;&#9;&#9;player = 1 + (int) (rand.getCard()* 12) + 1;&#13;&#10;&#9;&#9;&#9;&#9;player = control(player);&#13;&#10;&#9;&#9;&#9;&#9;x = (int) (rand.getCard() * 12) + 1;&#13;&#10;&#9;&#9;&#9;&#9;x = control(x);&#13;&#10;&#9;&#9;&#9;&#9;player += x;&#13;&#10;&#9;&#9;&#9;&#9;if (player == 21)&#13;&#10;&#9;&#9;&#9;&#9;&#9;field.setText(&quot;21 Vittoria Grande Baldoria!&quot;);&#13;&#10;&#9;&#9;&#9;&#9;out = false;&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#13;&#10;&#9;&#9;&#9;if (tmp == &quot;stand&quot;) {&#13;&#10;&#9;&#9;&#9;&#9;if (out != true) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;x = (int) (rand.getCard() * 12) + 1;&#13;&#10;&#9;&#9;&#9;&#9;&#9;x = control(x);&#13;&#10;&#9;&#9;&#9;&#9;&#9;player += x;&#13;&#10;&#9;&#9;&#9;&#9;&#9;if (player &gt; 20) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;field.setText(&quot;Busted!&quot;);&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;out = true;&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;state_cpu += 1;&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;area_score.setText(&quot;Player: &quot; + state_player&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;+ &quot;\n\nCpu: &quot; + state_cpu);&#13;&#10;&#9;&#9;&#9;&#9;&#9;} else if (player == 21)&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;field.setText(&quot;BlackJack!&quot;);&#13;&#10;&#9;&#9;&#9;&#9;} else&#13;&#10;&#9;&#9;&#9;&#9;&#9;JOptionPane.showMessageDialog(null, &quot;push start!&quot;, &quot;&quot;,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;JOptionPane.ERROR_MESSAGE);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;&#9;if (tmp == &quot;hit&quot;) {&#13;&#10;&#9;&#9;&#9;&#9;if (out != true) {&#13;&#10;&#9;&#9;&#9;&#9;&#9;out = true;&#13;&#10;&#9;&#9;&#9;&#9;&#9;area.setText(area.getText() + &quot;\n\nCpu\n&quot;);&#13;&#10;&#9;&#9;&#9;&#9;&#9;cpu();&#13;&#10;&#9;&#9;&#9;&#9;} else&#13;&#10;&#9;&#9;&#9;&#9;&#9;JOptionPane.showMessageDialog(null, &quot;push start!&quot;, &quot;&quot;,&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;JOptionPane.ERROR_MESSAGE);&#13;&#10;&#9;&#9;&#9;}&#13;&#10;&#9;&#9;}&#13;&#10;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;private static final long serialVersionUID = -4708058535472595126L;&#13;&#10;&#9;private JButton b[] = { new JButton(&quot;hit&quot;), new JButton(&quot;stand&quot;),&#13;&#10;&#9;&#9;&#9;new JButton(&quot;start&quot;) };&#13;&#10;&#9;private JTextArea area, area_score;&#13;&#10;&#13;&#10;&#9;private JTextField field;&#13;&#10;&#13;&#10;&#9;private int player;&#13;&#10;&#13;&#10;&#9;private int x;&#13;&#10;&#9;private int cpu;&#13;&#10;&#9;private int state_player;&#13;&#10;&#9;private int state_cpu;&#13;&#10;&#9;private boolean out = true;&#13;&#10;&#9;private Randomizable rand;&#13;&#10;&#9;&#13;&#10;&#9;public Apple(Randomizable rand) { // costruttore campo da gioco&#13;&#10;&#9;&#9;area = new JTextArea();&#13;&#10;&#9;&#9;field = new JTextField();&#13;&#10;&#9;&#9;area_score = new JTextArea();&#13;&#10;&#9;&#9;&#13;&#10;&#9;&#9;this.rand = rand;&#13;&#10;&#13;&#10;&#9;&#9;area.setName(&quot;area&quot;);&#13;&#10;&#9;&#9;field.setName(&quot;field&quot;);&#13;&#10;&#9;&#9;area_score.setName(&quot;area_score&quot;);&#13;&#10;&#13;&#10;&#9;&#9;add(field);&#13;&#10;&#9;&#9;add(area_score);&#13;&#10;&#9;&#9;add(area);&#13;&#10;&#9;&#9;setLayout(null);&#13;&#10;&#9;&#9;setBackground(Color.BLACK);&#13;&#10;&#9;&#9;setBounds(100, 80, 520, 300);&#13;&#10;&#13;&#10;&#9;&#9;for (int i = 0, y = 0; i &lt; 3; i++, y += 20) {&#13;&#10;&#9;&#9;&#9;b[i].addActionListener(new Ascoltatore());&#13;&#10;&#9;&#9;&#9;b[i].setBounds(20, 20 + y, 100, 20);&#13;&#10;&#9;&#9;&#9;add(b[i]);&#13;&#10;&#9;&#9;}&#13;&#10;&#13;&#10;&#9;&#9;area.setBounds(140, 20, 325, 200);&#13;&#10;&#9;&#9;area.setFont(new Font(&quot;Sanserif&quot;, Font.ITALIC, 25));&#13;&#10;&#9;&#9;area.setBackground(Color.LIGHT_GRAY);&#13;&#10;&#9;&#9;area.setEditable(false);&#13;&#10;&#9;&#9;field.setEditable(false);&#13;&#10;&#9;&#9;field.setBounds(140, 228, 325, 20);&#13;&#10;&#9;&#9;field.setFont(new Font(&quot;Sanserif&quot;, Font.BOLD, 15));&#13;&#10;&#9;&#9;field.setBackground(Color.LIGHT_GRAY);&#13;&#10;&#9;&#9;area_score.setBackground(Color.GREEN);&#13;&#10;&#9;&#9;area_score.setForeground(Color.BLACK);&#13;&#10;&#9;&#9;area_score.setFont(new Font(&quot;Sanserif&quot;, Font.BOLD, 23));&#13;&#10;&#9;&#9;area_score.setBounds(20, 120, 95, 90);&#13;&#10;&#9;&#9;area_score.setEditable(false);&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;public int control(int p) { // metodo di controllo per stabilire se il&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// valore generato ? una figura, in tal caso&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// ritono il relativo valore&#13;&#10;&#13;&#10;&#9;&#9;if (p &gt;= 2 &amp;&amp; p &lt;= 10) {&#13;&#10;&#9;&#9;&#9;area.setText(area.getText() + &quot; &quot; + p);&#13;&#10;&#9;&#9;&#9;return p;&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;if (p == 1) {&#13;&#10;&#9;&#9;&#9;area.setText(area.getText() + &quot; A&quot;);&#13;&#10;&#9;&#9;&#9;return 11;&#13;&#10;&#9;&#9;} else {&#13;&#10;&#9;&#9;&#9;if (p == 13)&#13;&#10;&#9;&#9;&#9;&#9;area.setText(area.getText() + &quot; K&quot;);&#13;&#10;&#9;&#9;&#9;else if (p == 12)&#13;&#10;&#9;&#9;&#9;&#9;area.setText(area.getText() + &quot; Q&quot;);&#13;&#10;&#9;&#9;&#9;else if (p == 11)&#13;&#10;&#9;&#9;&#9;&#9;area.setText(area.getText() + &quot; J&quot;);&#13;&#10;&#9;&#9;&#9;return 10;&#13;&#10;&#9;&#9;}&#13;&#10;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;public void cpu() { // metodo cpu simula la giocata da parte della cpu&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;// tramite un semplice while&#13;&#10;&#9;&#9;cpu = (int) (rand.getCard() * 12) + 1;&#13;&#10;&#9;&#9;cpu = control(cpu);&#13;&#10;&#9;&#9;x = (int) (rand.getCard() * 12) + 1;&#13;&#10;&#9;&#9;x = control(x);&#13;&#10;&#9;&#9;cpu += x;&#13;&#10;&#9;&#9;while (cpu &lt; player) { // tramite questa istruzione il programma non fa&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// altro ke generare un numero rand finche la&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// somma dei valori usciti non supera quella&#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// della giocatore&#13;&#10;&#9;&#9;&#9;x = (int) (rand.getCard() * 12) + 1;&#13;&#10;&#9;&#9;&#9;cpu += control(x);&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;if (cpu &gt; 21) {&#13;&#10;&#9;&#9;&#9;field.setText(&quot;Win!&quot;);&#13;&#10;&#9;&#9;&#9;state_player += 1;&#13;&#10;&#9;&#9;&#9;area_score.setText(&quot;Player: &quot; + state_player + &quot;\n\nCpu: &quot;&#13;&#10;&#9;&#9;&#9;&#9;&#9;+ state_cpu);&#13;&#10;&#9;&#9;} else {&#13;&#10;&#9;&#9;&#9;field.setText(&quot;Lose!&quot;);&#13;&#10;&#9;&#9;&#9;state_cpu += 1;&#13;&#10;&#9;&#9;&#9;area_score.setText(&quot;Player: &quot; + state_player + &quot;\n\nCpu: &quot;&#13;&#10;&#9;&#9;&#9;&#9;&#9;+ state_cpu);&#13;&#10;&#9;&#9;}&#13;&#10;&#9;&#9;cpu = 0;&#13;&#10;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;public JTextArea getArea() {&#13;&#10;&#9;&#9;return area;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return area_score&#13;&#10;&#9; */&#13;&#10;&#9;public String getArea_scoreText() {&#13;&#10;&#9;&#9;return area_score.getText();&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return cpu&#13;&#10;&#9; */&#13;&#10;&#9;public int getCpu() {&#13;&#10;&#9;&#9;return cpu;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return field&#13;&#10;&#9; */&#13;&#10;&#9;public String getFieldText() {&#13;&#10;&#9;&#9;return field.getText();&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return player&#13;&#10;&#9; */&#13;&#10;&#9;public int getPlayer() {&#13;&#10;&#9;&#9;return player;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return state_cpu&#13;&#10;&#9; */&#13;&#10;&#9;public int getState_cpu() {&#13;&#10;&#9;&#9;return state_cpu;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @return state_player&#13;&#10;&#9; */&#13;&#10;&#9;public int getState_player() {&#13;&#10;&#9;&#9;return state_player;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;public void setArea(JTextArea area) {&#13;&#10;&#9;&#9;this.area = area;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @param area_score area_score da impostare&#13;&#10;&#9; */&#13;&#10;&#9;public void setArea_scoreText(String area_score) {&#13;&#10;&#9;&#9;this.area_score.setText(area_score);&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @param cpu cpu da impostare&#13;&#10;&#9; */&#13;&#10;&#9;public void setCpu(int cpu) {&#13;&#10;&#9;&#9;this.cpu = cpu;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @param field field da impostare&#13;&#10;&#9; */&#13;&#10;&#9;public void setFieldText(String field) {&#13;&#10;&#9;&#9;this.field.setText(field);&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @param player player da impostare&#13;&#10;&#9; */&#13;&#10;&#9;public void setPlayer(int player) {&#13;&#10;&#9;&#9;this.player = player;&#13;&#10;&#9;}&#13;&#10;&#9;/**&#13;&#10;&#9; * @param state_cpu state_cpu da impostare&#13;&#10;&#9; */&#13;&#10;&#9;public void setState_cpu(int state_cpu) {&#13;&#10;&#9;&#9;this.state_cpu = state_cpu;&#13;&#10;&#9;}&#13;&#10;&#13;&#10;&#9;/**&#13;&#10;&#9; * @param state_player state_player da impostare&#13;&#10;&#9; */&#13;&#10;&#9;public void setState_player(int state_player) {&#13;&#10;&#9;&#9;this.state_player = state_player;&#13;&#10;&#9;}&#13;&#10;}" Filename="Apple.java" Intrnl_Id="4"/>
+</SrcFileList>
+<CritList>
+<CritListEntry Name="org.codecover.model.utils.criteria.LoopCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.BranchCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.ConditionCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.SynchronizedStatementCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.QMOCoverage" PluginName="org.codecover"/>
+<CritListEntry Name="org.codecover.model.utils.criteria.StatementCoverage" PluginName="org.codecover"/>
+</CritList>
+<BoolOpList>
+<BoolOp Arity="2" Intrnl_Id="5" Name="conditional and (&amp;&amp;)">
+<BoolAssgnmntBoolMapList>
+<MapEntry BoolAssgnmnt="10" Value="false"/>
+<MapEntry BoolAssgnmnt="02" Value="false"/>
+<MapEntry BoolAssgnmnt="11" Value="true"/>
+</BoolAssgnmntBoolMapList>
+</BoolOp>
+</BoolOpList>
+<HierarchyLvlTypeList>
+<HierarchyLvlType EnglishName="package" IntrnlName="package" Intrnl_Id="6"/>
+<HierarchyLvlType EnglishName="class" IntrnlName="class" Intrnl_Id="7"/>
+<HierarchyLvlType EnglishName="method" IntrnlName="method" Intrnl_Id="8"/>
+<HierarchyLvlType EnglishName="default package" IntrnlName="default package" Intrnl_Id="9"/>
+<HierarchyLvlType EnglishName="interface" IntrnlName="interface" Intrnl_Id="10"/>
+</HierarchyLvlTypeList>
+<MASTRoot>
+<HierarchyLvl HierarchyLvlId="360" HierarchyLvlTypeId="9" Intrnl_Id="11" Name="default package">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="359" HierarchyLvlTypeId="6" Intrnl_Id="12" Name="blackjack">
+<Header/>
+<LocList/>
+<HierarchyLvl HierarchyLvlId="333" HierarchyLvlTypeId="7" Intrnl_Id="13" Name="Randomizer">
+<Header>
+<Loc EndOffset="116" SrcFileId="1" StartOffset="69"/>
+</Header>
+<LocList>
+<Loc EndOffset="402" SrcFileId="1" StartOffset="69"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="331" HierarchyLvlTypeId="8" Intrnl_Id="14" Name="Randomizer">
+<Header>
+<Loc EndOffset="160" SrcFileId="1" StartOffset="141"/>
+</Header>
+<LocList>
+<Loc EndOffset="222" SrcFileId="1" StartOffset="141"/>
+</LocList>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="332" HierarchyLvlTypeId="8" Intrnl_Id="15" Name="getCard">
+<Header>
+<Loc EndOffset="332" SrcFileId="1" StartOffset="297"/>
+</Header>
+<LocList>
+<Loc EndOffset="397" SrcFileId="1" StartOffset="297"/>
+</LocList>
+<StmntSeq Intrnl_Id="16">
+<LocList>
+<Loc EndOffset="359" SrcFileId="1" StartOffset="338"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="blackjack.Randomizer.java" Intrnl_Id="17">
+<LocList>
+<Loc EndOffset="359" SrcFileId="1" StartOffset="338"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="335" HierarchyLvlTypeId="10" Intrnl_Id="18" Name="Randomizable">
+<Header>
+<Loc EndOffset="98" SrcFileId="2" StartOffset="69"/>
+</Header>
+<LocList>
+<Loc EndOffset="130" SrcFileId="2" StartOffset="69"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="334" HierarchyLvlTypeId="8" Intrnl_Id="19" Name="getCard">
+<Header>
+<Loc EndOffset="126" SrcFileId="2" StartOffset="103"/>
+</Header>
+<LocList>
+<Loc EndOffset="127" SrcFileId="2" StartOffset="103"/>
+</LocList>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="338" HierarchyLvlTypeId="7" Intrnl_Id="20" Name="Black">
+<Header>
+<Loc EndOffset="85" SrcFileId="3" StartOffset="52"/>
+</Header>
+<LocList>
+<Loc EndOffset="626" SrcFileId="3" StartOffset="52"/>
+</LocList>
+<StmntSeq Intrnl_Id="21">
+<LocList>
+<Loc EndOffset="227" SrcFileId="3" StartOffset="161"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="blackjack.Black.java" Intrnl_Id="22">
+<LocList>
+<Loc EndOffset="227" SrcFileId="3" StartOffset="161"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="336" HierarchyLvlTypeId="8" Intrnl_Id="23" Name="Black">
+<Header>
+<Loc EndOffset="246" SrcFileId="3" StartOffset="232"/>
+</Header>
+<LocList>
+<Loc EndOffset="527" SrcFileId="3" StartOffset="232"/>
+</LocList>
+<StmntSeq Intrnl_Id="24">
+<LocList>
+<Loc EndOffset="306" SrcFileId="3" StartOffset="267"/>
+<Loc EndOffset="347" SrcFileId="3" StartOffset="310"/>
+<Loc EndOffset="380" SrcFileId="3" StartOffset="351"/>
+<Loc EndOffset="394" SrcFileId="3" StartOffset="384"/>
+<Loc EndOffset="427" SrcFileId="3" StartOffset="398"/>
+<Loc EndOffset="448" SrcFileId="3" StartOffset="431"/>
+<Loc EndOffset="472" SrcFileId="3" StartOffset="452"/>
+<Loc EndOffset="523" SrcFileId="3" StartOffset="476"/>
+</LocList>
+<BasicStmnt CovItemId="S2" CovItemPrefix="blackjack.Black.java" Intrnl_Id="25">
+<LocList>
+<Loc EndOffset="306" SrcFileId="3" StartOffset="267"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S3" CovItemPrefix="blackjack.Black.java" Intrnl_Id="26">
+<LocList>
+<Loc EndOffset="347" SrcFileId="3" StartOffset="310"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="blackjack.Black.java" Intrnl_Id="27">
+<LocList>
+<Loc EndOffset="380" SrcFileId="3" StartOffset="351"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="blackjack.Black.java" Intrnl_Id="28">
+<LocList>
+<Loc EndOffset="394" SrcFileId="3" StartOffset="384"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="blackjack.Black.java" Intrnl_Id="29">
+<LocList>
+<Loc EndOffset="427" SrcFileId="3" StartOffset="398"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="blackjack.Black.java" Intrnl_Id="30">
+<LocList>
+<Loc EndOffset="448" SrcFileId="3" StartOffset="431"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="blackjack.Black.java" Intrnl_Id="31">
+<LocList>
+<Loc EndOffset="472" SrcFileId="3" StartOffset="452"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S9" CovItemPrefix="blackjack.Black.java" Intrnl_Id="32">
+<LocList>
+<Loc EndOffset="523" SrcFileId="3" StartOffset="476"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="337" HierarchyLvlTypeId="8" Intrnl_Id="33" Name="main">
+<Header>
+<Loc EndOffset="569" SrcFileId="3" StartOffset="531"/>
+</Header>
+<LocList>
+<Loc EndOffset="621" SrcFileId="3" StartOffset="531"/>
+</LocList>
+<StmntSeq Intrnl_Id="34">
+<LocList>
+<Loc EndOffset="615" SrcFileId="3" StartOffset="603"/>
+</LocList>
+<BasicStmnt CovItemId="S10" CovItemPrefix="blackjack.Black.java" Intrnl_Id="35">
+<LocList>
+<Loc EndOffset="615" SrcFileId="3" StartOffset="603"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="358" HierarchyLvlTypeId="7" Intrnl_Id="36" Name="Apple">
+<Header>
+<Loc EndOffset="336" SrcFileId="4" StartOffset="303"/>
+</Header>
+<LocList>
+<Loc EndOffset="428" SrcFileId="4" StartOffset="303"/>
+<Loc EndOffset="6151" SrcFileId="4" StartOffset="1732"/>
+</LocList>
+<StmntSeq Intrnl_Id="37">
+<LocList>
+<Loc EndOffset="1804" SrcFileId="4" StartOffset="1737"/>
+<Loc EndOffset="1900" SrcFileId="4" StartOffset="1807"/>
+<Loc EndOffset="2113" SrcFileId="4" StartOffset="2086"/>
+</LocList>
+<BasicStmnt CovItemId="S32" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="38">
+<LocList>
+<Loc EndOffset="1804" SrcFileId="4" StartOffset="1737"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S33" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="39">
+<LocList>
+<Loc EndOffset="1900" SrcFileId="4" StartOffset="1807"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S34" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="40">
+<LocList>
+<Loc EndOffset="2113" SrcFileId="4" StartOffset="2086"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<HierarchyLvl HierarchyLvlId="340" HierarchyLvlTypeId="7" Intrnl_Id="41" Name="Ascoltatore">
+<Header>
+<Loc EndOffset="478" SrcFileId="4" StartOffset="428"/>
+</Header>
+<LocList>
+<Loc EndOffset="1732" SrcFileId="4" StartOffset="428"/>
+</LocList>
+<HierarchyLvl HierarchyLvlId="339" HierarchyLvlTypeId="8" Intrnl_Id="42" Name="actionPerformed">
+<Header>
+<Loc EndOffset="584" SrcFileId="4" StartOffset="542"/>
+</Header>
+<LocList>
+<Loc EndOffset="1726" SrcFileId="4" StartOffset="542"/>
+</LocList>
+<StmntSeq Intrnl_Id="43">
+<LocList>
+<Loc EndOffset="625" SrcFileId="4" StartOffset="591"/>
+<Loc EndOffset="970" SrcFileId="4" StartOffset="632"/>
+<Loc EndOffset="1477" SrcFileId="4" StartOffset="977"/>
+<Loc EndOffset="1721" SrcFileId="4" StartOffset="1482"/>
+</LocList>
+<BasicStmnt CovItemId="S1" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="44">
+<LocList>
+<Loc EndOffset="625" SrcFileId="4" StartOffset="591"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S2" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="45">
+<Branch CovItemId="B1" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="46">
+<Cond/>
+<LocList>
+<Loc EndOffset="970" SrcFileId="4" StartOffset="652"/>
+</LocList>
+<StmntSeq Intrnl_Id="47">
+<LocList>
+<Loc EndOffset="677" SrcFileId="4" StartOffset="659"/>
+<Loc EndOffset="708" SrcFileId="4" StartOffset="683"/>
+<Loc EndOffset="758" SrcFileId="4" StartOffset="714"/>
+<Loc EndOffset="789" SrcFileId="4" StartOffset="764"/>
+<Loc EndOffset="831" SrcFileId="4" StartOffset="795"/>
+<Loc EndOffset="852" SrcFileId="4" StartOffset="837"/>
+<Loc EndOffset="870" SrcFileId="4" StartOffset="858"/>
+<Loc EndOffset="946" SrcFileId="4" StartOffset="876"/>
+<Loc EndOffset="964" SrcFileId="4" StartOffset="952"/>
+</LocList>
+<BasicStmnt CovItemId="S3" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="48">
+<LocList>
+<Loc EndOffset="677" SrcFileId="4" StartOffset="659"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S4" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="49">
+<LocList>
+<Loc EndOffset="708" SrcFileId="4" StartOffset="683"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S5" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="50">
+<LocList>
+<Loc EndOffset="758" SrcFileId="4" StartOffset="714"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S6" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="51">
+<LocList>
+<Loc EndOffset="789" SrcFileId="4" StartOffset="764"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S7" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="52">
+<LocList>
+<Loc EndOffset="831" SrcFileId="4" StartOffset="795"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S8" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="53">
+<LocList>
+<Loc EndOffset="852" SrcFileId="4" StartOffset="837"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S9" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="54">
+<LocList>
+<Loc EndOffset="870" SrcFileId="4" StartOffset="858"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S10" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="55">
+<Branch CovItemId="B3" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="56">
+<Cond/>
+<LocList>
+<Loc EndOffset="946" SrcFileId="4" StartOffset="900"/>
+</LocList>
+<StmntSeq Intrnl_Id="57">
+<LocList>
+<Loc EndOffset="946" SrcFileId="4" StartOffset="900"/>
+</LocList>
+<BasicStmnt CovItemId="S11" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="58">
+<LocList>
+<Loc EndOffset="946" SrcFileId="4" StartOffset="900"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B4" CovItemPrefix="blackjack.Apple.java" Implct="true" Intrnl_Id="59">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="60">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="878" SrcFileId="4" StartOffset="876"/>
+<LocList>
+<Loc EndOffset="946" SrcFileId="4" StartOffset="876"/>
+</LocList>
+<RootTerm CovItemId="C2" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="61">
+<BasicBoolTerm Intrnl_Id="62">
+<LocList>
+<Loc EndOffset="892" SrcFileId="4" StartOffset="880"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S12" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="63">
+<LocList>
+<Loc EndOffset="964" SrcFileId="4" StartOffset="952"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B2" CovItemPrefix="blackjack.Apple.java" Implct="true" Intrnl_Id="64">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="65">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="634" SrcFileId="4" StartOffset="632"/>
+<LocList>
+<Loc EndOffset="970" SrcFileId="4" StartOffset="632"/>
+</LocList>
+<RootTerm CovItemId="C1" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="66">
+<BasicBoolTerm Intrnl_Id="67">
+<LocList>
+<Loc EndOffset="650" SrcFileId="4" StartOffset="636"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<CondStmnt CovItemId="S13" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="68">
+<Branch CovItemId="B5" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="69">
+<Cond/>
+<LocList>
+<Loc EndOffset="1477" SrcFileId="4" StartOffset="997"/>
+</LocList>
+<StmntSeq Intrnl_Id="70">
+<LocList>
+<Loc EndOffset="1471" SrcFileId="4" StartOffset="1004"/>
+</LocList>
+<CondStmnt CovItemId="S14" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="71">
+<Branch CovItemId="B7" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="72">
+<Cond/>
+<LocList>
+<Loc EndOffset="1369" SrcFileId="4" StartOffset="1021"/>
+</LocList>
+<StmntSeq Intrnl_Id="73">
+<LocList>
+<Loc EndOffset="1065" SrcFileId="4" StartOffset="1029"/>
+<Loc EndOffset="1087" SrcFileId="4" StartOffset="1072"/>
+<Loc EndOffset="1106" SrcFileId="4" StartOffset="1094"/>
+<Loc EndOffset="1362" SrcFileId="4" StartOffset="1113"/>
+</LocList>
+<BasicStmnt CovItemId="S15" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="74">
+<LocList>
+<Loc EndOffset="1065" SrcFileId="4" StartOffset="1029"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S16" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="75">
+<LocList>
+<Loc EndOffset="1087" SrcFileId="4" StartOffset="1072"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S17" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="76">
+<LocList>
+<Loc EndOffset="1106" SrcFileId="4" StartOffset="1094"/>
+</LocList>
+</BasicStmnt>
+<CondStmnt CovItemId="S18" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="77">
+<Branch CovItemId="B9" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="78">
+<Cond/>
+<LocList>
+<Loc EndOffset="1303" SrcFileId="4" StartOffset="1130"/>
+</LocList>
+<StmntSeq Intrnl_Id="79">
+<LocList>
+<Loc EndOffset="1164" SrcFileId="4" StartOffset="1139"/>
+<Loc EndOffset="1183" SrcFileId="4" StartOffset="1172"/>
+<Loc EndOffset="1206" SrcFileId="4" StartOffset="1191"/>
+<Loc EndOffset="1295" SrcFileId="4" StartOffset="1214"/>
+</LocList>
+<BasicStmnt CovItemId="S19" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="80">
+<LocList>
+<Loc EndOffset="1164" SrcFileId="4" StartOffset="1139"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S20" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="81">
+<LocList>
+<Loc EndOffset="1183" SrcFileId="4" StartOffset="1172"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S21" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="82">
+<LocList>
+<Loc EndOffset="1206" SrcFileId="4" StartOffset="1191"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S22" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="83">
+<LocList>
+<Loc EndOffset="1295" SrcFileId="4" StartOffset="1214"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B10" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="84">
+<Cond>
+<Loc EndOffset="1308" SrcFileId="4" StartOffset="1304"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1362" SrcFileId="4" StartOffset="1309"/>
+</LocList>
+<StmntSeq Intrnl_Id="85">
+<LocList>
+<Loc EndOffset="1362" SrcFileId="4" StartOffset="1309"/>
+</LocList>
+<CondStmnt CovItemId="S23" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="86">
+<Branch CovItemId="B11" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="87">
+<Cond/>
+<LocList>
+<Loc EndOffset="1362" SrcFileId="4" StartOffset="1334"/>
+</LocList>
+<StmntSeq Intrnl_Id="88">
+<LocList>
+<Loc EndOffset="1362" SrcFileId="4" StartOffset="1334"/>
+</LocList>
+<BasicStmnt CovItemId="S24" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="89">
+<LocList>
+<Loc EndOffset="1362" SrcFileId="4" StartOffset="1334"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B12" CovItemPrefix="blackjack.Apple.java" Implct="true" Intrnl_Id="90">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="91">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1311" SrcFileId="4" StartOffset="1309"/>
+<LocList>
+<Loc EndOffset="1362" SrcFileId="4" StartOffset="1309"/>
+</LocList>
+<RootTerm CovItemId="C6" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="92">
+<BasicBoolTerm Intrnl_Id="93">
+<LocList>
+<Loc EndOffset="1325" SrcFileId="4" StartOffset="1313"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1115" SrcFileId="4" StartOffset="1113"/>
+<LocList>
+<Loc EndOffset="1362" SrcFileId="4" StartOffset="1113"/>
+</LocList>
+<RootTerm CovItemId="C5" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="94">
+<BasicBoolTerm Intrnl_Id="95">
+<LocList>
+<Loc EndOffset="1128" SrcFileId="4" StartOffset="1117"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B8" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="96">
+<Cond>
+<Loc EndOffset="1374" SrcFileId="4" StartOffset="1370"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1471" SrcFileId="4" StartOffset="1381"/>
+</LocList>
+<StmntSeq Intrnl_Id="97">
+<LocList>
+<Loc EndOffset="1471" SrcFileId="4" StartOffset="1381"/>
+</LocList>
+<BasicStmnt CovItemId="S25" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="98">
+<LocList>
+<Loc EndOffset="1471" SrcFileId="4" StartOffset="1381"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1006" SrcFileId="4" StartOffset="1004"/>
+<LocList>
+<Loc EndOffset="1471" SrcFileId="4" StartOffset="1004"/>
+</LocList>
+<RootTerm CovItemId="C4" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="99">
+<BasicBoolTerm Intrnl_Id="100">
+<LocList>
+<Loc EndOffset="1019" SrcFileId="4" StartOffset="1008"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B6" CovItemPrefix="blackjack.Apple.java" Implct="true" Intrnl_Id="101">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="102">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="979" SrcFileId="4" StartOffset="977"/>
+<LocList>
+<Loc EndOffset="1477" SrcFileId="4" StartOffset="977"/>
+</LocList>
+<RootTerm CovItemId="C3" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="103">
+<BasicBoolTerm Intrnl_Id="104">
+<LocList>
+<Loc EndOffset="995" SrcFileId="4" StartOffset="981"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<CondStmnt CovItemId="S26" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="105">
+<Branch CovItemId="B13" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="106">
+<Cond/>
+<LocList>
+<Loc EndOffset="1721" SrcFileId="4" StartOffset="1500"/>
+</LocList>
+<StmntSeq Intrnl_Id="107">
+<LocList>
+<Loc EndOffset="1715" SrcFileId="4" StartOffset="1507"/>
+</LocList>
+<CondStmnt CovItemId="S27" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="108">
+<Branch CovItemId="B15" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="109">
+<Cond/>
+<LocList>
+<Loc EndOffset="1613" SrcFileId="4" StartOffset="1524"/>
+</LocList>
+<StmntSeq Intrnl_Id="110">
+<LocList>
+<Loc EndOffset="1543" SrcFileId="4" StartOffset="1532"/>
+<Loc EndOffset="1593" SrcFileId="4" StartOffset="1550"/>
+<Loc EndOffset="1606" SrcFileId="4" StartOffset="1600"/>
+</LocList>
+<BasicStmnt CovItemId="S28" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="111">
+<LocList>
+<Loc EndOffset="1543" SrcFileId="4" StartOffset="1532"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S29" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="112">
+<LocList>
+<Loc EndOffset="1593" SrcFileId="4" StartOffset="1550"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S30" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="113">
+<LocList>
+<Loc EndOffset="1606" SrcFileId="4" StartOffset="1600"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B16" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="114">
+<Cond>
+<Loc EndOffset="1618" SrcFileId="4" StartOffset="1614"/>
+</Cond>
+<LocList>
+<Loc EndOffset="1715" SrcFileId="4" StartOffset="1625"/>
+</LocList>
+<StmntSeq Intrnl_Id="115">
+<LocList>
+<Loc EndOffset="1715" SrcFileId="4" StartOffset="1625"/>
+</LocList>
+<BasicStmnt CovItemId="S31" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="116">
+<LocList>
+<Loc EndOffset="1715" SrcFileId="4" StartOffset="1625"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1509" SrcFileId="4" StartOffset="1507"/>
+<LocList>
+<Loc EndOffset="1715" SrcFileId="4" StartOffset="1507"/>
+</LocList>
+<RootTerm CovItemId="C8" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="117">
+<BasicBoolTerm Intrnl_Id="118">
+<LocList>
+<Loc EndOffset="1522" SrcFileId="4" StartOffset="1511"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B14" CovItemPrefix="blackjack.Apple.java" Implct="true" Intrnl_Id="119">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="120">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="1484" SrcFileId="4" StartOffset="1482"/>
+<LocList>
+<Loc EndOffset="1721" SrcFileId="4" StartOffset="1482"/>
+</LocList>
+<RootTerm CovItemId="C7" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="121">
+<BasicBoolTerm Intrnl_Id="122">
+<LocList>
+<Loc EndOffset="1498" SrcFileId="4" StartOffset="1486"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="341" HierarchyLvlTypeId="8" Intrnl_Id="123" Name="Apple">
+<Header>
+<Loc EndOffset="2179" SrcFileId="4" StartOffset="2148"/>
+</Header>
+<LocList>
+<Loc EndOffset="3264" SrcFileId="4" StartOffset="2148"/>
+</LocList>
+<StmntSeq Intrnl_Id="124">
+<LocList>
+<Loc EndOffset="2238" SrcFileId="4" StartOffset="2215"/>
+<Loc EndOffset="2267" SrcFileId="4" StartOffset="2242"/>
+<Loc EndOffset="2300" SrcFileId="4" StartOffset="2271"/>
+<Loc EndOffset="2325" SrcFileId="4" StartOffset="2308"/>
+<Loc EndOffset="2352" SrcFileId="4" StartOffset="2331"/>
+<Loc EndOffset="2379" SrcFileId="4" StartOffset="2356"/>
+<Loc EndOffset="2416" SrcFileId="4" StartOffset="2383"/>
+<Loc EndOffset="2433" SrcFileId="4" StartOffset="2422"/>
+<Loc EndOffset="2453" SrcFileId="4" StartOffset="2437"/>
+<Loc EndOffset="2467" SrcFileId="4" StartOffset="2457"/>
+<Loc EndOffset="2487" SrcFileId="4" StartOffset="2471"/>
+<Loc EndOffset="2518" SrcFileId="4" StartOffset="2491"/>
+<Loc EndOffset="2551" SrcFileId="4" StartOffset="2522"/>
+<Loc EndOffset="2710" SrcFileId="4" StartOffset="2557"/>
+<Loc EndOffset="2750" SrcFileId="4" StartOffset="2716"/>
+<Loc EndOffset="2806" SrcFileId="4" StartOffset="2754"/>
+<Loc EndOffset="2847" SrcFileId="4" StartOffset="2810"/>
+<Loc EndOffset="2875" SrcFileId="4" StartOffset="2851"/>
+<Loc EndOffset="2904" SrcFileId="4" StartOffset="2879"/>
+<Loc EndOffset="2943" SrcFileId="4" StartOffset="2908"/>
+<Loc EndOffset="2998" SrcFileId="4" StartOffset="2947"/>
+<Loc EndOffset="3040" SrcFileId="4" StartOffset="3002"/>
+<Loc EndOffset="3082" SrcFileId="4" StartOffset="3044"/>
+<Loc EndOffset="3124" SrcFileId="4" StartOffset="3086"/>
+<Loc EndOffset="3184" SrcFileId="4" StartOffset="3128"/>
+<Loc EndOffset="3226" SrcFileId="4" StartOffset="3188"/>
+<Loc EndOffset="3260" SrcFileId="4" StartOffset="3230"/>
+</LocList>
+<BasicStmnt CovItemId="S35" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="125">
+<LocList>
+<Loc EndOffset="2238" SrcFileId="4" StartOffset="2215"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S36" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="126">
+<LocList>
+<Loc EndOffset="2267" SrcFileId="4" StartOffset="2242"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S37" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="127">
+<LocList>
+<Loc EndOffset="2300" SrcFileId="4" StartOffset="2271"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S38" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="128">
+<LocList>
+<Loc EndOffset="2325" SrcFileId="4" StartOffset="2308"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S39" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="129">
+<LocList>
+<Loc EndOffset="2352" SrcFileId="4" StartOffset="2331"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S40" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="130">
+<LocList>
+<Loc EndOffset="2379" SrcFileId="4" StartOffset="2356"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S41" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="131">
+<LocList>
+<Loc EndOffset="2416" SrcFileId="4" StartOffset="2383"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S42" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="132">
+<LocList>
+<Loc EndOffset="2433" SrcFileId="4" StartOffset="2422"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S43" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="133">
+<LocList>
+<Loc EndOffset="2453" SrcFileId="4" StartOffset="2437"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S44" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="134">
+<LocList>
+<Loc EndOffset="2467" SrcFileId="4" StartOffset="2457"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S45" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="135">
+<LocList>
+<Loc EndOffset="2487" SrcFileId="4" StartOffset="2471"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S46" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="136">
+<LocList>
+<Loc EndOffset="2518" SrcFileId="4" StartOffset="2491"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S47" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="137">
+<LocList>
+<Loc EndOffset="2551" SrcFileId="4" StartOffset="2522"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S48" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="138" MltplExecId="L1-2" MltplExecPrefix="blackjack.Apple.java" NvrExecId="L1-0" NvrExecPrefix="blackjack.Apple.java" OnceExecutedId="L1-1" OnceExecutedPrefix="blackjack.Apple.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="139">
+<LocList>
+<Loc EndOffset="2649" SrcFileId="4" StartOffset="2607"/>
+<Loc EndOffset="2690" SrcFileId="4" StartOffset="2654"/>
+<Loc EndOffset="2705" SrcFileId="4" StartOffset="2695"/>
+</LocList>
+<BasicStmnt CovItemId="S49" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="140">
+<LocList>
+<Loc EndOffset="2649" SrcFileId="4" StartOffset="2607"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S50" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="141">
+<LocList>
+<Loc EndOffset="2690" SrcFileId="4" StartOffset="2654"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S51" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="142">
+<LocList>
+<Loc EndOffset="2705" SrcFileId="4" StartOffset="2695"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="2560" SrcFileId="4" StartOffset="2557"/>
+<LocList>
+<Loc EndOffset="2710" SrcFileId="4" StartOffset="2557"/>
+</LocList>
+<RootTerm CovItemId="C9" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="143">
+<BasicBoolTerm Intrnl_Id="144">
+<LocList>
+<Loc EndOffset="2585" SrcFileId="4" StartOffset="2580"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<BasicStmnt CovItemId="S52" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="145">
+<LocList>
+<Loc EndOffset="2750" SrcFileId="4" StartOffset="2716"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S53" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="146">
+<LocList>
+<Loc EndOffset="2806" SrcFileId="4" StartOffset="2754"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S54" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="147">
+<LocList>
+<Loc EndOffset="2847" SrcFileId="4" StartOffset="2810"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S55" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="148">
+<LocList>
+<Loc EndOffset="2875" SrcFileId="4" StartOffset="2851"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S56" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="149">
+<LocList>
+<Loc EndOffset="2904" SrcFileId="4" StartOffset="2879"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S57" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="150">
+<LocList>
+<Loc EndOffset="2943" SrcFileId="4" StartOffset="2908"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S58" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="151">
+<LocList>
+<Loc EndOffset="2998" SrcFileId="4" StartOffset="2947"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S59" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="152">
+<LocList>
+<Loc EndOffset="3040" SrcFileId="4" StartOffset="3002"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S60" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="153">
+<LocList>
+<Loc EndOffset="3082" SrcFileId="4" StartOffset="3044"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S61" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="154">
+<LocList>
+<Loc EndOffset="3124" SrcFileId="4" StartOffset="3086"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S62" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="155">
+<LocList>
+<Loc EndOffset="3184" SrcFileId="4" StartOffset="3128"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S63" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="156">
+<LocList>
+<Loc EndOffset="3226" SrcFileId="4" StartOffset="3188"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S64" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="157">
+<LocList>
+<Loc EndOffset="3260" SrcFileId="4" StartOffset="3230"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="342" HierarchyLvlTypeId="8" Intrnl_Id="158" Name="control">
+<Header>
+<Loc EndOffset="3294" SrcFileId="4" StartOffset="3269"/>
+</Header>
+<LocList>
+<Loc EndOffset="3822" SrcFileId="4" StartOffset="3269"/>
+</LocList>
+<StmntSeq Intrnl_Id="159">
+<LocList>
+<Loc EndOffset="3524" SrcFileId="4" StartOffset="3437"/>
+<Loc EndOffset="3816" SrcFileId="4" StartOffset="3528"/>
+</LocList>
+<CondStmnt CovItemId="S65" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="160">
+<Branch CovItemId="B17" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="161">
+<Cond/>
+<LocList>
+<Loc EndOffset="3524" SrcFileId="4" StartOffset="3460"/>
+</LocList>
+<StmntSeq Intrnl_Id="162">
+<LocList>
+<Loc EndOffset="3505" SrcFileId="4" StartOffset="3466"/>
+<Loc EndOffset="3519" SrcFileId="4" StartOffset="3510"/>
+</LocList>
+<BasicStmnt CovItemId="S66" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="163">
+<LocList>
+<Loc EndOffset="3505" SrcFileId="4" StartOffset="3466"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S67" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="164">
+<LocList>
+<Loc EndOffset="3519" SrcFileId="4" StartOffset="3510"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B18" CovItemPrefix="blackjack.Apple.java" Implct="true" Intrnl_Id="165">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="166">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3439" SrcFileId="4" StartOffset="3437"/>
+<LocList>
+<Loc EndOffset="3524" SrcFileId="4" StartOffset="3437"/>
+</LocList>
+<RootTerm CovItemId="C10" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="167">
+<OpTerm BooleanOpId="5" Intrnl_Id="168">
+<BasicBoolTerm Intrnl_Id="169">
+<LocList>
+<Loc EndOffset="3447" SrcFileId="4" StartOffset="3441"/>
+</LocList>
+</BasicBoolTerm>
+<BasicBoolTerm Intrnl_Id="170">
+<LocList>
+<Loc EndOffset="3458" SrcFileId="4" StartOffset="3451"/>
+</LocList>
+</BasicBoolTerm>
+<LocList>
+<Loc EndOffset="3450" SrcFileId="4" StartOffset="3448"/>
+</LocList>
+</OpTerm>
+</RootTerm>
+</CondStmnt>
+<CondStmnt CovItemId="S68" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="171">
+<Branch CovItemId="B19" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="172">
+<Cond/>
+<LocList>
+<Loc EndOffset="3602" SrcFileId="4" StartOffset="3540"/>
+</LocList>
+<StmntSeq Intrnl_Id="173">
+<LocList>
+<Loc EndOffset="3582" SrcFileId="4" StartOffset="3546"/>
+<Loc EndOffset="3597" SrcFileId="4" StartOffset="3587"/>
+</LocList>
+<BasicStmnt CovItemId="S69" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="174">
+<LocList>
+<Loc EndOffset="3582" SrcFileId="4" StartOffset="3546"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S70" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="175">
+<LocList>
+<Loc EndOffset="3597" SrcFileId="4" StartOffset="3587"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B20" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="176">
+<Cond>
+<Loc EndOffset="3607" SrcFileId="4" StartOffset="3603"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3816" SrcFileId="4" StartOffset="3608"/>
+</LocList>
+<StmntSeq Intrnl_Id="177">
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3614"/>
+<Loc EndOffset="3811" SrcFileId="4" StartOffset="3801"/>
+</LocList>
+<CondStmnt CovItemId="S71" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="178">
+<Branch CovItemId="B21" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="179">
+<Cond/>
+<LocList>
+<Loc EndOffset="3668" SrcFileId="4" StartOffset="3632"/>
+</LocList>
+<StmntSeq Intrnl_Id="180">
+<LocList>
+<Loc EndOffset="3668" SrcFileId="4" StartOffset="3632"/>
+</LocList>
+<BasicStmnt CovItemId="S72" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="181">
+<LocList>
+<Loc EndOffset="3668" SrcFileId="4" StartOffset="3632"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B22" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="182">
+<Cond>
+<Loc EndOffset="3677" SrcFileId="4" StartOffset="3673"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3678"/>
+</LocList>
+<StmntSeq Intrnl_Id="183">
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3678"/>
+</LocList>
+<CondStmnt CovItemId="S73" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="184">
+<Branch CovItemId="B23" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="185">
+<Cond/>
+<LocList>
+<Loc EndOffset="3732" SrcFileId="4" StartOffset="3696"/>
+</LocList>
+<StmntSeq Intrnl_Id="186">
+<LocList>
+<Loc EndOffset="3732" SrcFileId="4" StartOffset="3696"/>
+</LocList>
+<BasicStmnt CovItemId="S74" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="187">
+<LocList>
+<Loc EndOffset="3732" SrcFileId="4" StartOffset="3696"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B24" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="188">
+<Cond>
+<Loc EndOffset="3741" SrcFileId="4" StartOffset="3737"/>
+</Cond>
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3742"/>
+</LocList>
+<StmntSeq Intrnl_Id="189">
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3742"/>
+</LocList>
+<CondStmnt CovItemId="S75" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="190">
+<Branch CovItemId="B25" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="191">
+<Cond/>
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3760"/>
+</LocList>
+<StmntSeq Intrnl_Id="192">
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3760"/>
+</LocList>
+<BasicStmnt CovItemId="S76" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="193">
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3760"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B26" CovItemPrefix="blackjack.Apple.java" Implct="true" Intrnl_Id="194">
+<Cond/>
+<LocList/>
+<StmntSeq Intrnl_Id="195">
+<LocList/>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3744" SrcFileId="4" StartOffset="3742"/>
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3742"/>
+</LocList>
+<RootTerm CovItemId="C14" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="196">
+<BasicBoolTerm Intrnl_Id="197">
+<LocList>
+<Loc EndOffset="3753" SrcFileId="4" StartOffset="3746"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3680" SrcFileId="4" StartOffset="3678"/>
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3678"/>
+</LocList>
+<RootTerm CovItemId="C13" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="198">
+<BasicBoolTerm Intrnl_Id="199">
+<LocList>
+<Loc EndOffset="3689" SrcFileId="4" StartOffset="3682"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3616" SrcFileId="4" StartOffset="3614"/>
+<LocList>
+<Loc EndOffset="3796" SrcFileId="4" StartOffset="3614"/>
+</LocList>
+<RootTerm CovItemId="C12" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="200">
+<BasicBoolTerm Intrnl_Id="201">
+<LocList>
+<Loc EndOffset="3625" SrcFileId="4" StartOffset="3618"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S77" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="202">
+<LocList>
+<Loc EndOffset="3811" SrcFileId="4" StartOffset="3801"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="3530" SrcFileId="4" StartOffset="3528"/>
+<LocList>
+<Loc EndOffset="3816" SrcFileId="4" StartOffset="3528"/>
+</LocList>
+<RootTerm CovItemId="C11" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="203">
+<BasicBoolTerm Intrnl_Id="204">
+<LocList>
+<Loc EndOffset="3538" SrcFileId="4" StartOffset="3532"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="343" HierarchyLvlTypeId="8" Intrnl_Id="205" Name="cpu">
+<Header>
+<Loc EndOffset="3844" SrcFileId="4" StartOffset="3827"/>
+</Header>
+<LocList>
+<Loc EndOffset="4669" SrcFileId="4" StartOffset="3827"/>
+</LocList>
+<StmntSeq Intrnl_Id="206">
+<LocList>
+<Loc EndOffset="3975" SrcFileId="4" StartOffset="3937"/>
+<Loc EndOffset="3998" SrcFileId="4" StartOffset="3979"/>
+<Loc EndOffset="4038" SrcFileId="4" StartOffset="4002"/>
+<Loc EndOffset="4057" SrcFileId="4" StartOffset="4042"/>
+<Loc EndOffset="4070" SrcFileId="4" StartOffset="4061"/>
+<Loc EndOffset="4351" SrcFileId="4" StartOffset="4074"/>
+<Loc EndOffset="4651" SrcFileId="4" StartOffset="4355"/>
+<Loc EndOffset="4663" SrcFileId="4" StartOffset="4655"/>
+</LocList>
+<BasicStmnt CovItemId="S78" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="207">
+<LocList>
+<Loc EndOffset="3975" SrcFileId="4" StartOffset="3937"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S79" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="208">
+<LocList>
+<Loc EndOffset="3998" SrcFileId="4" StartOffset="3979"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S80" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="209">
+<LocList>
+<Loc EndOffset="4038" SrcFileId="4" StartOffset="4002"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S81" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="210">
+<LocList>
+<Loc EndOffset="4057" SrcFileId="4" StartOffset="4042"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S82" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="211">
+<LocList>
+<Loc EndOffset="4070" SrcFileId="4" StartOffset="4061"/>
+</LocList>
+</BasicStmnt>
+<LoopStmnt CovItemId="S83" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="212" MltplExecId="L2-2" MltplExecPrefix="blackjack.Apple.java" NvrExecId="L2-0" NvrExecPrefix="blackjack.Apple.java" OnceExecutedId="L2-1" OnceExecutedPrefix="blackjack.Apple.java" OptBodyExec="true">
+<StmntSeq Intrnl_Id="213">
+<LocList>
+<Loc EndOffset="4323" SrcFileId="4" StartOffset="4287"/>
+<Loc EndOffset="4346" SrcFileId="4" StartOffset="4328"/>
+</LocList>
+<BasicStmnt CovItemId="S84" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="214">
+<LocList>
+<Loc EndOffset="4323" SrcFileId="4" StartOffset="4287"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S85" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="215">
+<LocList>
+<Loc EndOffset="4346" SrcFileId="4" StartOffset="4328"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+<Keyword EndOffset="4079" SrcFileId="4" StartOffset="4074"/>
+<LocList>
+<Loc EndOffset="4351" SrcFileId="4" StartOffset="4074"/>
+</LocList>
+<RootTerm CovItemId="C15" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="216">
+<BasicBoolTerm Intrnl_Id="217">
+<LocList>
+<Loc EndOffset="4093" SrcFileId="4" StartOffset="4081"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</LoopStmnt>
+<CondStmnt CovItemId="S86" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="218">
+<Branch CovItemId="B27" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="219">
+<Cond/>
+<LocList>
+<Loc EndOffset="4508" SrcFileId="4" StartOffset="4369"/>
+</LocList>
+<StmntSeq Intrnl_Id="220">
+<LocList>
+<Loc EndOffset="4397" SrcFileId="4" StartOffset="4375"/>
+<Loc EndOffset="4420" SrcFileId="4" StartOffset="4402"/>
+<Loc EndOffset="4503" SrcFileId="4" StartOffset="4425"/>
+</LocList>
+<BasicStmnt CovItemId="S87" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="221">
+<LocList>
+<Loc EndOffset="4397" SrcFileId="4" StartOffset="4375"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S88" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="222">
+<LocList>
+<Loc EndOffset="4420" SrcFileId="4" StartOffset="4402"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S89" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="223">
+<LocList>
+<Loc EndOffset="4503" SrcFileId="4" StartOffset="4425"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Branch CovItemId="B28" CovItemPrefix="blackjack.Apple.java" Implct="false" Intrnl_Id="224">
+<Cond>
+<Loc EndOffset="4513" SrcFileId="4" StartOffset="4509"/>
+</Cond>
+<LocList>
+<Loc EndOffset="4651" SrcFileId="4" StartOffset="4514"/>
+</LocList>
+<StmntSeq Intrnl_Id="225">
+<LocList>
+<Loc EndOffset="4543" SrcFileId="4" StartOffset="4520"/>
+<Loc EndOffset="4563" SrcFileId="4" StartOffset="4548"/>
+<Loc EndOffset="4646" SrcFileId="4" StartOffset="4568"/>
+</LocList>
+<BasicStmnt CovItemId="S90" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="226">
+<LocList>
+<Loc EndOffset="4543" SrcFileId="4" StartOffset="4520"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S91" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="227">
+<LocList>
+<Loc EndOffset="4563" SrcFileId="4" StartOffset="4548"/>
+</LocList>
+</BasicStmnt>
+<BasicStmnt CovItemId="S92" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="228">
+<LocList>
+<Loc EndOffset="4646" SrcFileId="4" StartOffset="4568"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</Branch>
+<Keyword EndOffset="4357" SrcFileId="4" StartOffset="4355"/>
+<LocList>
+<Loc EndOffset="4651" SrcFileId="4" StartOffset="4355"/>
+</LocList>
+<RootTerm CovItemId="C16" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="229">
+<BasicBoolTerm Intrnl_Id="230">
+<LocList>
+<Loc EndOffset="4367" SrcFileId="4" StartOffset="4359"/>
+</LocList>
+</BasicBoolTerm>
+</RootTerm>
+</CondStmnt>
+<BasicStmnt CovItemId="S93" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="231">
+<LocList>
+<Loc EndOffset="4663" SrcFileId="4" StartOffset="4655"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="344" HierarchyLvlTypeId="8" Intrnl_Id="232" Name="getArea">
+<Header>
+<Loc EndOffset="4700" SrcFileId="4" StartOffset="4674"/>
+</Header>
+<LocList>
+<Loc EndOffset="4722" SrcFileId="4" StartOffset="4674"/>
+</LocList>
+<StmntSeq Intrnl_Id="233">
+<LocList>
+<Loc EndOffset="4718" SrcFileId="4" StartOffset="4706"/>
+</LocList>
+<BasicStmnt CovItemId="S94" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="234">
+<LocList>
+<Loc EndOffset="4718" SrcFileId="4" StartOffset="4706"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="345" HierarchyLvlTypeId="8" Intrnl_Id="235" Name="getArea_scoreText">
+<Header>
+<Loc EndOffset="4796" SrcFileId="4" StartOffset="4763"/>
+</Header>
+<LocList>
+<Loc EndOffset="4834" SrcFileId="4" StartOffset="4763"/>
+</LocList>
+<StmntSeq Intrnl_Id="236">
+<LocList>
+<Loc EndOffset="4830" SrcFileId="4" StartOffset="4802"/>
+</LocList>
+<BasicStmnt CovItemId="S95" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="237">
+<LocList>
+<Loc EndOffset="4830" SrcFileId="4" StartOffset="4802"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="346" HierarchyLvlTypeId="8" Intrnl_Id="238" Name="getCpu">
+<Header>
+<Loc EndOffset="4887" SrcFileId="4" StartOffset="4868"/>
+</Header>
+<LocList>
+<Loc EndOffset="4908" SrcFileId="4" StartOffset="4868"/>
+</LocList>
+<StmntSeq Intrnl_Id="239">
+<LocList>
+<Loc EndOffset="4904" SrcFileId="4" StartOffset="4893"/>
+</LocList>
+<BasicStmnt CovItemId="S96" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="240">
+<LocList>
+<Loc EndOffset="4904" SrcFileId="4" StartOffset="4893"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="347" HierarchyLvlTypeId="8" Intrnl_Id="241" Name="getFieldText">
+<Header>
+<Loc EndOffset="4972" SrcFileId="4" StartOffset="4944"/>
+</Header>
+<LocList>
+<Loc EndOffset="5005" SrcFileId="4" StartOffset="4944"/>
+</LocList>
+<StmntSeq Intrnl_Id="242">
+<LocList>
+<Loc EndOffset="5001" SrcFileId="4" StartOffset="4978"/>
+</LocList>
+<BasicStmnt CovItemId="S97" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="243">
+<LocList>
+<Loc EndOffset="5001" SrcFileId="4" StartOffset="4978"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="348" HierarchyLvlTypeId="8" Intrnl_Id="244" Name="getPlayer">
+<Header>
+<Loc EndOffset="5064" SrcFileId="4" StartOffset="5042"/>
+</Header>
+<LocList>
+<Loc EndOffset="5088" SrcFileId="4" StartOffset="5042"/>
+</LocList>
+<StmntSeq Intrnl_Id="245">
+<LocList>
+<Loc EndOffset="5084" SrcFileId="4" StartOffset="5070"/>
+</LocList>
+<BasicStmnt CovItemId="S98" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="246">
+<LocList>
+<Loc EndOffset="5084" SrcFileId="4" StartOffset="5070"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="349" HierarchyLvlTypeId="8" Intrnl_Id="247" Name="getState_cpu">
+<Header>
+<Loc EndOffset="5153" SrcFileId="4" StartOffset="5128"/>
+</Header>
+<LocList>
+<Loc EndOffset="5180" SrcFileId="4" StartOffset="5128"/>
+</LocList>
+<StmntSeq Intrnl_Id="248">
+<LocList>
+<Loc EndOffset="5176" SrcFileId="4" StartOffset="5159"/>
+</LocList>
+<BasicStmnt CovItemId="S99" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="249">
+<LocList>
+<Loc EndOffset="5176" SrcFileId="4" StartOffset="5159"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="350" HierarchyLvlTypeId="8" Intrnl_Id="250" Name="getState_player">
+<Header>
+<Loc EndOffset="5251" SrcFileId="4" StartOffset="5223"/>
+</Header>
+<LocList>
+<Loc EndOffset="5281" SrcFileId="4" StartOffset="5223"/>
+</LocList>
+<StmntSeq Intrnl_Id="251">
+<LocList>
+<Loc EndOffset="5277" SrcFileId="4" StartOffset="5257"/>
+</LocList>
+<BasicStmnt CovItemId="S100" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="252">
+<LocList>
+<Loc EndOffset="5277" SrcFileId="4" StartOffset="5257"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="351" HierarchyLvlTypeId="8" Intrnl_Id="253" Name="setArea">
+<Header>
+<Loc EndOffset="5321" SrcFileId="4" StartOffset="5286"/>
+</Header>
+<LocList>
+<Loc EndOffset="5348" SrcFileId="4" StartOffset="5286"/>
+</LocList>
+<StmntSeq Intrnl_Id="254">
+<LocList>
+<Loc EndOffset="5344" SrcFileId="4" StartOffset="5327"/>
+</LocList>
+<BasicStmnt CovItemId="S101" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="255">
+<LocList>
+<Loc EndOffset="5344" SrcFileId="4" StartOffset="5327"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="352" HierarchyLvlTypeId="8" Intrnl_Id="256" Name="setArea_scoreText">
+<Header>
+<Loc EndOffset="5460" SrcFileId="4" StartOffset="5412"/>
+</Header>
+<LocList>
+<Loc EndOffset="5506" SrcFileId="4" StartOffset="5412"/>
+</LocList>
+<StmntSeq Intrnl_Id="257">
+<LocList>
+<Loc EndOffset="5502" SrcFileId="4" StartOffset="5466"/>
+</LocList>
+<BasicStmnt CovItemId="S102" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="258">
+<LocList>
+<Loc EndOffset="5502" SrcFileId="4" StartOffset="5466"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="353" HierarchyLvlTypeId="8" Intrnl_Id="259" Name="setCpu">
+<Header>
+<Loc EndOffset="5583" SrcFileId="4" StartOffset="5556"/>
+</Header>
+<LocList>
+<Loc EndOffset="5608" SrcFileId="4" StartOffset="5556"/>
+</LocList>
+<StmntSeq Intrnl_Id="260">
+<LocList>
+<Loc EndOffset="5604" SrcFileId="4" StartOffset="5589"/>
+</LocList>
+<BasicStmnt CovItemId="S103" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="261">
+<LocList>
+<Loc EndOffset="5604" SrcFileId="4" StartOffset="5589"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="354" HierarchyLvlTypeId="8" Intrnl_Id="262" Name="setFieldText">
+<Header>
+<Loc EndOffset="5700" SrcFileId="4" StartOffset="5662"/>
+</Header>
+<LocList>
+<Loc EndOffset="5736" SrcFileId="4" StartOffset="5662"/>
+</LocList>
+<StmntSeq Intrnl_Id="263">
+<LocList>
+<Loc EndOffset="5732" SrcFileId="4" StartOffset="5706"/>
+</LocList>
+<BasicStmnt CovItemId="S104" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="264">
+<LocList>
+<Loc EndOffset="5732" SrcFileId="4" StartOffset="5706"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="355" HierarchyLvlTypeId="8" Intrnl_Id="265" Name="setPlayer">
+<Header>
+<Loc EndOffset="5825" SrcFileId="4" StartOffset="5792"/>
+</Header>
+<LocList>
+<Loc EndOffset="5856" SrcFileId="4" StartOffset="5792"/>
+</LocList>
+<StmntSeq Intrnl_Id="266">
+<LocList>
+<Loc EndOffset="5852" SrcFileId="4" StartOffset="5831"/>
+</LocList>
+<BasicStmnt CovItemId="S105" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="267">
+<LocList>
+<Loc EndOffset="5852" SrcFileId="4" StartOffset="5831"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="356" HierarchyLvlTypeId="8" Intrnl_Id="268" Name="setState_cpu">
+<Header>
+<Loc EndOffset="5955" SrcFileId="4" StartOffset="5916"/>
+</Header>
+<LocList>
+<Loc EndOffset="5992" SrcFileId="4" StartOffset="5916"/>
+</LocList>
+<StmntSeq Intrnl_Id="269">
+<LocList>
+<Loc EndOffset="5988" SrcFileId="4" StartOffset="5961"/>
+</LocList>
+<BasicStmnt CovItemId="S106" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="270">
+<LocList>
+<Loc EndOffset="5988" SrcFileId="4" StartOffset="5961"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+<HierarchyLvl HierarchyLvlId="357" HierarchyLvlTypeId="8" Intrnl_Id="271" Name="setState_player">
+<Header>
+<Loc EndOffset="6105" SrcFileId="4" StartOffset="6060"/>
+</Header>
+<LocList>
+<Loc EndOffset="6148" SrcFileId="4" StartOffset="6060"/>
+</LocList>
+<StmntSeq Intrnl_Id="272">
+<LocList>
+<Loc EndOffset="6144" SrcFileId="4" StartOffset="6111"/>
+</LocList>
+<BasicStmnt CovItemId="S107" CovItemPrefix="blackjack.Apple.java" Intrnl_Id="273">
+<LocList>
+<Loc EndOffset="6144" SrcFileId="4" StartOffset="6111"/>
+</LocList>
+</BasicStmnt>
+</StmntSeq>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</HierarchyLvl>
+</MASTRoot>
+</TestSessionContainer>
