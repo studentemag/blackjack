@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestBbActionPerformed" project="blackjack" tests="23" started="23" failures="0" errors="0" ignored="0">
+  <testsuite name="test.TestBbActionPerformed" time="2.641">
+    <testsuite name="[0]" time="2.273">
+      <testcase name="testActionPerformed[0]" classname="test.TestBbActionPerformed" time="2.273"/>
+    </testsuite>
+    <testsuite name="[1]" time="0.007">
+      <testcase name="testActionPerformed[1]" classname="test.TestBbActionPerformed" time="0.007"/>
+    </testsuite>
+    <testsuite name="[2]" time="0.03">
+      <testcase name="testActionPerformed[2]" classname="test.TestBbActionPerformed" time="0.03"/>
+    </testsuite>
+    <testsuite name="[3]" time="0.006">
+      <testcase name="testActionPerformed[3]" classname="test.TestBbActionPerformed" time="0.006"/>
+    </testsuite>
+    <testsuite name="[4]" time="0.012">
+      <testcase name="testActionPerformed[4]" classname="test.TestBbActionPerformed" time="0.012"/>
+    </testsuite>
+    <testsuite name="[5]" time="0.019">
+      <testcase name="testActionPerformed[5]" classname="test.TestBbActionPerformed" time="0.019"/>
+    </testsuite>
+    <testsuite name="[6]" time="0.03">
+      <testcase name="testActionPerformed[6]" classname="test.TestBbActionPerformed" time="0.03"/>
+    </testsuite>
+    <testsuite name="[7]" time="0.039">
+      <testcase name="testActionPerformed[7]" classname="test.TestBbActionPerformed" time="0.039"/>
+    </testsuite>
+    <testsuite name="[8]" time="0.022">
+      <testcase name="testActionPerformed[8]" classname="test.TestBbActionPerformed" time="0.022"/>
+    </testsuite>
+    <testsuite name="[9]" time="0.048">
+      <testcase name="testActionPerformed[9]" classname="test.TestBbActionPerformed" time="0.048"/>
+    </testsuite>
+    <testsuite name="[10]" time="0.028">
+      <testcase name="testActionPerformed[10]" classname="test.TestBbActionPerformed" time="0.028"/>
+    </testsuite>
+    <testsuite name="[11]" time="0.018">
+      <testcase name="testActionPerformed[11]" classname="test.TestBbActionPerformed" time="0.018"/>
+    </testsuite>
+    <testsuite name="[12]" time="0.006">
+      <testcase name="testActionPerformed[12]" classname="test.TestBbActionPerformed" time="0.006"/>
+    </testsuite>
+    <testsuite name="[13]" time="0.006">
+      <testcase name="testActionPerformed[13]" classname="test.TestBbActionPerformed" time="0.006"/>
+    </testsuite>
+    <testsuite name="[14]" time="0.009">
+      <testcase name="testActionPerformed[14]" classname="test.TestBbActionPerformed" time="0.009"/>
+    </testsuite>
+    <testsuite name="[15]" time="0.01">
+      <testcase name="testActionPerformed[15]" classname="test.TestBbActionPerformed" time="0.01"/>
+    </testsuite>
+    <testsuite name="[16]" time="0.008">
+      <testcase name="testActionPerformed[16]" classname="test.TestBbActionPerformed" time="0.008"/>
+    </testsuite>
+    <testsuite name="[17]" time="0.007">
+      <testcase name="testActionPerformed[17]" classname="test.TestBbActionPerformed" time="0.007"/>
+    </testsuite>
+    <testsuite name="[18]" time="0.012">
+      <testcase name="testActionPerformed[18]" classname="test.TestBbActionPerformed" time="0.012"/>
+    </testsuite>
+    <testsuite name="[19]" time="0.013">
+      <testcase name="testActionPerformed[19]" classname="test.TestBbActionPerformed" time="0.013"/>
+    </testsuite>
+    <testsuite name="[20]" time="0.019">
+      <testcase name="testActionPerformed[20]" classname="test.TestBbActionPerformed" time="0.019"/>
+    </testsuite>
+    <testsuite name="[21]" time="0.01">
+      <testcase name="testActionPerformed[21]" classname="test.TestBbActionPerformed" time="0.01"/>
+    </testsuite>
+    <testsuite name="[22]" time="0.008">
+      <testcase name="testActionPerformed[22]" classname="test.TestBbActionPerformed" time="0.008"/>
+    </testsuite>
+  </testsuite>
+</testrun>
