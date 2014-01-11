@@ -103,12 +103,12 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 	 */
 	public void testTransition2(){
 		assertEquals(State.INIT,currentState());
-		int cpu_global_score=0;
+		int player_global_score=0;
 		
 		int iterations=0;
 		boolean traversed = false;
 		do {
-			cpu_global_score=BjOracle.cpuGlobalScore(area_score.getText());
+			player_global_score=BjOracle.playerGlobalScore(area_score.getText());
 			startButton.click();
 			if ( !BjOracle.blackJack(area.getText()) )
 				startButton.click();
@@ -119,7 +119,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 		assertTrue(iterations < maxIterations);
 		assertEquals(State.INIT,currentState());
 		assertEquals(BjOracle.bjWinString,field.getText());
-		assertEquals(cpu_global_score+1,BjOracle.cpuGlobalScore(area_score.getText()));
+		assertEquals(player_global_score+1,BjOracle.playerGlobalScore(area_score.getText()));
 	}
 	
 	
@@ -223,7 +223,7 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 		
 		assertFalse(area.getText().isEmpty());
 		assertEquals(BjOracle.bjWinString,field.getText());
-		assertEquals(player_global_score+1,BjOracle.cpuGlobalScore(area_score.getText()));
+		assertEquals(player_global_score+1,BjOracle.playerGlobalScore(area_score.getText()));
 	}
 	
 	/*
