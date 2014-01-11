@@ -84,12 +84,12 @@ public class TestBbActionPerformed {
 				{false,7,new Integer[]{7},"hit",0,0,"hello",14,false,"",0,0,0,"hello 7",true}, //10
 				{false,7,new Integer[]{9},"hit",0,0,"hello",16,false,"",0,0,0,"hello 9",true}, //11
 				{false,7,new Integer[]{10},"hit",0,0,"hello",17,false,"",0,0,0,"hello 10",true}, //12
-				{false,7,new Integer[]{11},"hit",0,0,"hello",18,false,"",0,0,0,"hello J",true}, //13
-				{false,7,new Integer[]{12},"hit",0,0,"hello",19,false,"",0,0,0,"hello Q",true}, //14
-				{false,7,new Integer[]{13},"hit",0,0,"hello",20,false,"",0,0,0,"hello K",true}, //15
+				{false,7,new Integer[]{11},"hit",0,0,"hello",17,false,"",0,0,0,"hello J",true}, //13
+				{false,7,new Integer[]{12},"hit",0,0,"hello",17,false,"",0,0,0,"hello Q",true}, //14
+				{false,7,new Integer[]{13},"hit",0,0,"hello",17,false,"",0,0,0,"hello K",true}, //15
 				{false,7,new Integer[]{-1},"hit",0,0,"hello",0,false,null,0,0,0,null,false}, //16
 				{false,7,new Integer[]{15},"hit",0,0,"hello",0,false,null,0,0,0,null,false}, //17
-				{false,7,new Integer[] {8,8},"stand",0,0,"hello",7,true,"Lose!",1,0,1,"hello 8 8\n\nCpu\n 8",true}, //18
+				{false,7,new Integer[] {8,8},"stand",0,0,"hello",7,true,"Lose!",1,0,1,"hello\n\nCpu\n 8 8",true}, //18
 				{false,7,new Integer[] {8,8},"start",0,0,"hello",16,false,"",0,0,0,"Player\n 8 8",true}, //19
 				{false,7,new Integer[]{8},"hello",0,0,"hello",0,false,null,0,0,0,null,false}, //20
 				{false,7,new Integer[]{8},"hit",-1,0,"hello",0,false,null,0,0,0,null,false}, //21

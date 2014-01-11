@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestControl" project="blackjack" tests="9" started="9" failures="0" errors="0" ignored="0">
+  <testsuite name="test.TestControl" time="1.326">
+    <testcase name="testControl1" classname="test.TestControl" time="1.282"/>
+    <testcase name="testControl2" classname="test.TestControl" time="0.006"/>
+    <testcase name="testControl3" classname="test.TestControl" time="0.006"/>
+    <testcase name="testControl4" classname="test.TestControl" time="0.005"/>
+    <testcase name="testControl5" classname="test.TestControl" time="0.006"/>
+    <testcase name="testControl6" classname="test.TestControl" time="0.005"/>
+    <testcase name="testControl7" classname="test.TestControl" time="0.005"/>
+    <testcase name="testControl8" classname="test.TestControl" time="0.006"/>
+    <testcase name="testControl9" classname="test.TestControl" time="0.005"/>
+  </testsuite>
+</testrun>
