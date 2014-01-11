@@ -33,7 +33,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 				out = false;
 			}
 
-			if (tmp == "stand") {
+			if (tmp == "hit") {
 				if (out != true) {
 					x = (int) (rand.getCard() * 12) + 1;
 					x = control(x);
@@ -49,7 +49,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 				} else
 					dialogShower.showErrorMessage();
 			}
-			if (tmp == "hit") {
+			if (tmp == "stand") {
 				if (out != true) {
 					out = true;
 					area.setText(area.getText() + "\n\nCpu\n");
