@@ -8,6 +8,7 @@ import org.easymock.EasyMock;
 import test.mocks.RandomizerMock;
 import test.util.BjOracle;
 import blackjack.Apple;
+import blackjack.ModalDialogShower;
 import blackjack.Randomizable;
 
 
@@ -21,6 +22,7 @@ public class TestCpu extends TestCase {
 	RandomizerMock rand;
 	Apple a, a2;
 	Randomizable randeasymock;
+	ModalDialogShower dialogShowerMock;
 
 	
 
@@ -32,12 +34,15 @@ public class TestCpu extends TestCase {
 		
 		rand = new RandomizerMock();
 		rand.setcardIndex(0);
-		a = new Apple(rand);
+		
+		dialogShowerMock = EasyMock.createMock(ModalDialogShower.class);
+		
+		a = new Apple(rand, dialogShowerMock);
 		
 		// Istanzio un mock per l'interfaccia Randomizable
 		randeasymock = EasyMock.createMock(Randomizable.class);
 		// Lo passo al costruttore di Apple
-		a2 = new Apple(randeasymock);
+		a2 = new Apple(randeasymock, dialogShowerMock);
 
 	}
 

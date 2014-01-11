@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -24,9 +23,9 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 			if (tmp == "start") {
 				field.setText("");
 				area.setText("Player\n");
-				player = 1 + (int) (Math.random() * 12) + 1;
+				player = 1 + (int) (rand.getCard() * 12) + 1;
 				player = control(player);
-				x = (int) (Math.random() * 12) + 1;
+				x = (int) (rand.getCard() * 12) + 1;
 				x = control(x);
 				player += x;
 				if (player == 21)
@@ -36,7 +35,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 
 			if (tmp == "hit") {
 				if (out != true) {
-					x = (int) (Math.random() * 12) + 1;
+					x = (int) (rand.getCard() * 12) + 1;
 					x = control(x);
 					player += x;
 					if (player > 20) {
@@ -47,7 +46,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 					} else if (player == 21)
 						field.setText("BlackJack!");
 				} else
-					JOptionPane.showMessageDialog(null, "push start!", "", JOptionPane.ERROR_MESSAGE);
+					dialogShower.showErrorMessage();
 			}
 			if (tmp == "stand") {
 				if (out != true) {
@@ -55,7 +54,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 					area.setText(area.getText() + "\n\nCpu\n");
 					cpu();
 				} else
-					JOptionPane.showMessageDialog(null, "push start!", "", JOptionPane.ERROR_MESSAGE);
+					dialogShower.showErrorMessage();
 			}
 		}
 
@@ -76,13 +75,19 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	private int state_cpu;
 	private boolean out = true;
 	private Randomizable rand;
+	private ModalDialogShower dialogShower;
 	
-	public Apple(Randomizable rand) { // costruttore campo da gioco
+	private Ascoltatore ascoltatore;
+	
+	public Apple(Randomizable rand, ModalDialogShower dialogShower) { // costruttore campo da gioco
+		ascoltatore = new Ascoltatore();
+		
 		area = new JTextArea();
 		field = new JTextField();
 		area_score = new JTextArea();
 		
 		this.rand = rand;
+		this.dialogShower = dialogShower;
 
 		area.setName("area");
 		field.setName("field");
@@ -170,6 +175,14 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 		return area;
 	}
 
+	public String getAreaText() {
+		return area.getText();
+	}
+
+	public void setAreaText(String text) {
+		area.setText(text);
+	}
+	
 	/**
 	 * @return area_score
 	 */
@@ -255,5 +268,17 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	 */
 	public void setState_player(int state_player) {
 		this.state_player = state_player;
+	}
+	
+	public Ascoltatore getAscoltatore() {
+        return ascoltatore;
+	}
+	
+	public boolean isOut() {
+	        return out;
+	}
+	
+	public void setOut(boolean out) {
+	        this.out = out;
 	}
 }

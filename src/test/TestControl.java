@@ -3,6 +3,8 @@ package test;
 import junit.framework.TestCase;
 import test.util.BjOracle;
 import blackjack.Apple;
+import blackjack.ModalDialogShower;
+import blackjack.ModalDialogShowerImpl;
 import blackjack.Randomizable;
 import blackjack.Randomizer;
 
@@ -12,7 +14,8 @@ public class TestControl extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		Randomizable rand=new Randomizer();
-		unitUnderTest = new Apple(rand);
+		ModalDialogShower dialogShower= new ModalDialogShowerImpl();
+		unitUnderTest = new Apple(rand, dialogShower);
 	}
 	
 	public int runTestWithParameters(int card, String areaText){
