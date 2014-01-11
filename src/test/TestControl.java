@@ -14,7 +14,9 @@ public class TestControl extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		Randomizable rand=new Randomizer();
+
 		ModalDialogShower dialogShower = new ModalDialogShowerImpl();
+
 		unitUnderTest = new Apple(rand, dialogShower);
 	}
 	

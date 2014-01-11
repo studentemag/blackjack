@@ -23,7 +23,9 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 			if (tmp == "start") {
 				field.setText("");
 				area.setText("Player\n");
-				player = 1 + (int) (rand.getCard()* 12) + 1;
+
+				player = 1 + (int) (rand.getCard() * 12) + 1;
+
 				player = control(player);
 				x = (int) (rand.getCard() * 12) + 1;
 				x = control(x);
@@ -42,8 +44,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 						field.setText("Busted!");
 						out = true;
 						state_cpu += 1;
-						area_score.setText("Player: " + state_player
-								+ "\n\nCpu: " + state_cpu);
+						area_score.setText("Player: " + state_player + "\n\nCpu: " + state_cpu);
 					} else if (player == 21)
 						field.setText("BlackJack!");
 				} else
@@ -82,6 +83,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 
 	public Apple(Randomizable rand, ModalDialogShower dialogShower) { // costruttore campo da gioco
 		ascoltatore = new Ascoltatore();
+
 		area = new JTextArea();
 		field = new JTextField();
 		area_score = new JTextArea();
@@ -161,13 +163,11 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 		if (cpu > 21) {
 			field.setText("Win!");
 			state_player += 1;
-			area_score.setText("Player: " + state_player + "\n\nCpu: "
-					+ state_cpu);
+			area_score.setText("Player: " + state_player + "\n\nCpu: " + state_cpu);
 		} else {
 			field.setText("Lose!");
 			state_cpu += 1;
-			area_score.setText("Player: " + state_player + "\n\nCpu: "
-					+ state_cpu);
+			area_score.setText("Player: " + state_player + "\n\nCpu: " + state_cpu);
 		}
 		cpu = 0;
 
@@ -176,7 +176,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	public JTextArea getArea() {
 		return area;
 	}
-
+	
 	/**
 	 * @return area_score
 	 */
@@ -230,7 +230,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	public String getAreaText() {
 		return this.area.getText();
 	}
-
+	
 	/**
 	 * @param area_score area_score da impostare
 	 */
@@ -283,4 +283,6 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 	public void setOut(boolean out) {
 		this.out = out;
 	}
+	
+
 }

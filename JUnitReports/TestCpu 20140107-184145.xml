@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestCpu (1)" project="blackjack" tests="14" started="14" failures="0" errors="0" ignored="0">
+  <testsuite name="test.TestCpu" time="1.381">
+    <testcase name="testCpu01easymock" classname="test.TestCpu" time="1.199"/>
+    <testcase name="testCpu02easymock" classname="test.TestCpu" time="0.011"/>
+    <testcase name="testCpu03easymock" classname="test.TestCpu" time="0.01"/>
+    <testcase name="testCpu04easymock" classname="test.TestCpu" time="0.009"/>
+    <testcase name="testCpu05easymock" classname="test.TestCpu" time="0.013"/>
+    <testcase name="testCpu06easymock" classname="test.TestCpu" time="0.009"/>
+    <testcase name="testCpu07easymock" classname="test.TestCpu" time="0.011"/>
+    <testcase name="testCpu08easymock" classname="test.TestCpu" time="0.012"/>
+    <testcase name="testCpu09easymock" classname="test.TestCpu" time="0.025"/>
+    <testcase name="testCpu10easymock" classname="test.TestCpu" time="0.033"/>
+    <testcase name="testCpu11easymock" classname="test.TestCpu" time="0.015"/>
+    <testcase name="testCpu12easymock" classname="test.TestCpu" time="0.012"/>
+    <testcase name="testCpu13easymock" classname="test.TestCpu" time="0.012"/>
+    <testcase name="testCpu14easymock" classname="test.TestCpu" time="0.009"/>
+  </testsuite>
+</testrun>
