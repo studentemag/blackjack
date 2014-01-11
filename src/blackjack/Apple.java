@@ -46,7 +46,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 					x = (int) (rand.getCard() * 12) + 1;
 					x = control(x);
 					player += x;
-					if (player > 20) {
+					if (player > 21) {
 						field.setText("Busted!");
 						out = true;
 						state_cpu += 1;
