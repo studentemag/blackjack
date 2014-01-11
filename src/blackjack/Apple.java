@@ -24,7 +24,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 				field.setText("");
 				area.setText("Player\n");
 
-				player = 1 + (int) (rand.getCard() * 12) + 1;
+				player = 1 + (int) (rand.getCard() * 12);
 
 				player = control(player);
 				x = (int) (rand.getCard() * 12) + 1;
