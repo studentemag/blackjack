@@ -140,7 +140,7 @@ public class Apple extends JPanel { // la classe apple eredita i metodi e gli
 			else if (p == 12)
 				area.setText(area.getText() + " Q");
 			else if (p == 11)
-				area.setText(area.getText() + " J");
+				area.setText(area.getText() + " Q");
 			return 10;
 		}
 
