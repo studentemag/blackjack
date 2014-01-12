@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestWbActionPerformed" project="blackjack" tests="8" started="8" failures="0" errors="0" ignored="0">
+  <testsuite name="test.TestWbActionPerformed" time="1.002">
+    <testsuite name="[0]" time="0.954">
+      <testcase name="testActionPerformed[0]" classname="test.TestWbActionPerformed" time="0.954"/>
+    </testsuite>
+    <testsuite name="[1]" time="0.008">
+      <testcase name="testActionPerformed[1]" classname="test.TestWbActionPerformed" time="0.007"/>
+    </testsuite>
+    <testsuite name="[2]" time="0.007">
+      <testcase name="testActionPerformed[2]" classname="test.TestWbActionPerformed" time="0.007"/>
+    </testsuite>
+    <testsuite name="[3]" time="0.007">
+      <testcase name="testActionPerformed[3]" classname="test.TestWbActionPerformed" time="0.007"/>
+    </testsuite>
+    <testsuite name="[4]" time="0.006">
+      <testcase name="testActionPerformed[4]" classname="test.TestWbActionPerformed" time="0.006"/>
+    </testsuite>
+    <testsuite name="[5]" time="0.005">
+      <testcase name="testActionPerformed[5]" classname="test.TestWbActionPerformed" time="0.005"/>
+    </testsuite>
+    <testsuite name="[6]" time="0.01">
+      <testcase name="testActionPerformed[6]" classname="test.TestWbActionPerformed" time="0.01"/>
+    </testsuite>
+    <testsuite name="[7]" time="0.005">
+      <testcase name="testActionPerformed[7]" classname="test.TestWbActionPerformed" time="0.005"/>
+    </testsuite>
+  </testsuite>
+</testrun>

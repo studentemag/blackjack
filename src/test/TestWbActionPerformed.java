@@ -65,14 +65,14 @@ public class TestWbActionPerformed {
 	// These data are hard-coded into the class, but they could be
 	// generated or loaded in any way you like.
 		return Arrays.asList(new Object[][] { 
-				{false,0,new Integer[] {12,1},"start",0,0,"Hello",21,true,"21 Vittoria Grande Baldoria!",0,1,0,"Player\n Q A",false}, //01
-				{false,0,new Integer[] {7,11},"start",0,0,"Hello",17,false,"",0,0,0,"Player\n 7 J",false}, //02
-				{false,17,new Integer[] {6},"hit",0,0,"Hello",23,true,"Busted!",1,0,1,"Hello 6",false}, //03
-				{false,17,new Integer[] {4},"hit",0,0,"Hello",21,false,"BlackJack!",0,0,0,"Hello 4",false}, //04
-				{false,17,new Integer[] {2},"hit",0,0,"Hello",19,false,"",0,0,0,"Hello 2",false}, //05
-				{true,22,new Integer[] {4},"hit",0,0,"Hello",22,true,"",0,0,0,"Hello",true}, //06
-				{false,17,new Integer[] {8,5,7},"stand",0,0,"Hello",17,true,"Lose!",1,0,1,"Hello\n\nCpu\n 8 5 7",false}, //07
-				{true,17,new Integer[] {4},"stand",0,0,"Hello",17,true,"",0,0,0,"Hello",true}, //08
+				{false,0,new Integer[] {12,1},"start",0,0,"Hello",21,true,"21 Vittoria Grande Baldoria!",0,1,0,"Player\n Q A",false}, //00
+				{false,0,new Integer[] {7,11},"start",0,0,"Hello",17,false,"",0,0,0,"Player\n 7 J",false}, //01
+				{false,17,new Integer[] {6},"hit",0,0,"Hello",23,true,"Busted!",1,0,1,"Hello 6",false}, //02
+				{false,17,new Integer[] {4},"hit",0,0,"Hello",21,false,"BlackJack!",0,0,0,"Hello 4",false}, //03
+				{false,17,new Integer[] {2},"hit",0,0,"Hello",19,false,"",0,0,0,"Hello 2",false}, //04
+				{true,22,new Integer[] {4},"hit",0,0,"Hello",22,true,"",0,0,0,"Hello",true}, //05
+				{false,17,new Integer[] {8,5,7},"stand",0,0,"Hello",17,true,"Lose!",1,0,1,"Hello\n\nCpu\n 8 5 7",false}, //06
+				{true,17,new Integer[] {4},"stand",0,0,"Hello",17,true,"",0,0,0,"Hello",true}, //07
 		});
 	}
 
