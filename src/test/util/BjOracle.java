@@ -37,7 +37,7 @@ public class BjOracle {
 		int player_score = BjOracle.playerScore(area);
 		int cpu_score=BjOracle.cpuScore(area);
 		
-		return (cpu_score<=21 && cpu_score>player_score);
+		return (cpu_score<=21 && cpu_score>=player_score);
 	}
 	
 	public static int fromCardToScore(int card){
