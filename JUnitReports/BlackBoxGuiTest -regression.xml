@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BlackBoxGuiTest" project="blackjack" tests="11" started="11" failures="0" errors="0" ignored="0">
+  <testsuite name="test.BlackBoxGuiTest" time="10.587">
+    <testcase name="testTransition1" classname="test.BlackBoxGuiTest" time="9.831"/>
+    <testcase name="testTransition2" classname="test.BlackBoxGuiTest" time="0.187"/>
+    <testcase name="testTransitions3and5" classname="test.BlackBoxGuiTest" time="0.296"/>
+    <testcase name="testTransitions4and5" classname="test.BlackBoxGuiTest" time="0.029"/>
+    <testcase name="testTransition6" classname="test.BlackBoxGuiTest" time="0.01"/>
+    <testcase name="testTransition7" classname="test.BlackBoxGuiTest" time="0.019"/>
+    <testcase name="testTransition8" classname="test.BlackBoxGuiTest" time="0.009"/>
+    <testcase name="testTransition9" classname="test.BlackBoxGuiTest" time="0.01"/>
+    <testcase name="testTransition10" classname="test.BlackBoxGuiTest" time="0.105"/>
+    <testcase name="testTransition11" classname="test.BlackBoxGuiTest" time="0.081"/>
+    <testcase name="testTransition12" classname="test.BlackBoxGuiTest" time="0.01"/>
+  </testsuite>
+</testrun>
