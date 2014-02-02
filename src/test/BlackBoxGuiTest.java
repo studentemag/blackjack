@@ -303,8 +303,6 @@ public class BlackBoxGuiTest extends UISpecTestCase {
 			standButton.click();
 		}
 		while ( BjOracle.cpuWins(area.getText()) && ++iterations < maxIterations);
-		String area1 = area.getText();
-		String field1 = field.getText();
 		assertTrue(iterations < maxIterations);
 		assertEquals(State.INIT,currentState());
 		assertEquals(BjOracle.winString,field.getText());
