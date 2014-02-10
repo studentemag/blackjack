@@ -152,7 +152,7 @@ public class TestBbActionPerformed {
 	
 	public void testDialog(){
 		dialogShowerMock.showErrorMessage();
-		EasyMock.replay(randeasymock);
+		EasyMock.replay(dialogShowerMock);
 		
 		apple.setOut(out);
 		apple.setPlayer(player);
